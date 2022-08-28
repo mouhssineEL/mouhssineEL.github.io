@@ -502,3 +502,11 @@ We can check some important files:
 - **/proc/net/fib_trie ->** check network interfaces (with `grep -i  "host local" -B 1` we can get local ip).
 - **/proc/net/tcp ->** check port. The last four digits from the second column (rem\_address), if we add a **0x** in Python before we can get the port (its common to not get the port 80).
 
+---
+
+# Resources 
+
+| **Link**   | **Description**    |
+|--------------- | --------------- |
+| [dotdotpwn](https://www.kali.org/tools/dotdotpwn/) | is a very flexible intelligent fuzzer to discover traversal directory vulnerabilities |
+

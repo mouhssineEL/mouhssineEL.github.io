@@ -53,6 +53,7 @@ openssh
 openvpn
 x32dbg
 x64dbg
+dnSpy
 ```
 
 > Recommend using [Chocolatey](https://chocolatey.org/) for the installation.
