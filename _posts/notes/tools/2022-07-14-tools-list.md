@@ -93,10 +93,22 @@ PS C:\> choco install git
 PS C:\> choco install wsl2
 PS C:\> choco install openssh
 PS C:\> choco install openvpn
-PS C:\> choco install dnspy
+PS C:\> choco install brave
 ```
 
-Download the lastest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/tag/snapshot) and [ysoserial.net](https://github.com/frohoff/ysoserial/releases).
+Download the lastest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/tag/snapshot), [dnSpy](https://github.com/dnSpy/dnSpy/releases/tag/v6.1.8) and [ysoserial.net](https://github.com/frohoff/ysoserial/releases).
+
+---
+
+# For Malware Analysis 
+
+## Windows
+
+Use a Windows 10 VM (not main OS) and using the [Flare VM](https://github.com/mandiant/flare-vm) github we will use this [PowerShell Script](https://raw.githubusercontent.com/mandiant/flare-vm/master/install.ps1) to make a full installation.
+
+## For Linux 
+
+In this page, we can get the [REMnux](https://remnux.org/#distro) distro, for Malware Analysis.
 
 ---
 
