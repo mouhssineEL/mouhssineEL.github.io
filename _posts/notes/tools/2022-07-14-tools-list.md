@@ -61,46 +61,15 @@ zero@pio$ sudo apt update --fix-missing; sudo apt upgrade -y; sudo apt autoremov
 
 ---
 
-# For Windows
-
-```
-python
-vscode
-git
-wsl2
-openssh
-openvpn
-x32dbg
-x64dbg
-dnSpy
-ysoserial.net
-```
-
-## Chocolatey
-
-Install from [here](https://chocolatey.org/). In an administrator PowerShell:
-```console
-PS C:\> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
-
-## Install 
-
-Now for install with Chocolatey:
-```console
-PS C:\> choco install python
-PS C:\> choco install vscodium
-PS C:\> choco install git
-PS C:\> choco install wsl2
-PS C:\> choco install openssh
-PS C:\> choco install openvpn
-PS C:\> choco install brave
-```
-
-Download the lastest version of [x64dbg](https://github.com/x64dbg/x64dbg/releases/tag/snapshot), [dnSpy](https://github.com/dnSpy/dnSpy/releases/tag/v6.1.8) and [ysoserial.net](https://github.com/frohoff/ysoserial/releases).
-
----
-
 # For Malware Analysis 
+
+Always keep these machines in a VM, for a safe controlled enviroment. Also keeps them host-only in a isolated network, recommendable to be a different IP range from the home network (for example **10.0.0....**). You may need to add the following lines to a created file `/etc/vbox/networks.conf`{: .filepath} to could be able to create the network:
+```
+* 10.0.0.0/8 192.168.0.0/16
+* 2001::/64
+```
+
+The Linux host (REMnux) will be a Internet simulator, to make the malware thinks that he has Internet connection.
 
 ## Windows
 
@@ -108,7 +77,27 @@ Use a Windows 10 VM (not main OS) and using the [Flare VM](https://github.com/ma
 
 ## For Linux 
 
-In this page, we can get the [REMnux](https://remnux.org/#distro) distro, for Malware Analysis.
+In this page, we can get the [REMnux](https://remnux.org/#distro) distro, for Malware Analysis. For simulate the network we will use `inetsim`. Go to the config file `/etc/inetsim/inetsim.conf`{: .filepath}. Uncomment the line:
+```bash
+#start_service dns
+```
+
+In the **service_bind_address** uncomment the last line and change the IP to:
+```bash
+service_bind_address    0.0.0.0
+```
+
+In the **dns_default_ip** uncomment the last line and change the IP to the REMnux IP:
+```
+dns_default_ip          10.0.0.3
+```
+
+Now run the service:
+```
+remnux@remnux:~$ inetsim
+```
+
+If we go to Internet in the Windows VM and navigate to the Linux IP with http, https... we would see some default pages, meaning the service is working. If we search anything in the http and add **/<something>.exe** it will download an inetsim binary, to simulate for the malware a file downloading. Now change the default DNS for the Windows Host to be the REMnux, so if we type any domain it will redirect us to the inetsim default page.
 
 ---
 

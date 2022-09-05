@@ -78,7 +78,7 @@ icon: fas fa-folder-open
 
 ---
 
-# Training, CTFs,...
+# Training, CTFs, Malware...
 
 | **Link** | **Description** |
 |----------|-----------------|
@@ -95,6 +95,10 @@ icon: fas fa-folder-open
 | [CTF Challenge](https://ctfchallenge.com/) | CTFs challenges |
 | **Other** |
 | [Hackrocks](https://hackrocks.com/) | Spanish page for learn |
+| **Malware** |
+| [vx underground](https://www.vx-underground.org/) | Major ransomware repository |
+| [theZoo](https://thezoo.morirt.com/) | A repository of LIVE malwares for your own joy and pleasure |
+| [zeltser](https://zeltser.com/) | repository of malware repositories |
 
 ---
 
@@ -117,8 +121,7 @@ icon: fas fa-folder-open
 | **Forums** |
 | [breached](https://breached.to/) | Forum for breached data |
 | [Guided Hacking](https://guidedhacking.com/) | Forum for game hacking |
-| **Ransomware** |
+| **Ransomgroups** |
 | [Ransomwiki](https://darkfeed.io/ransomwiki/) | Info about major ransom groups |
-| [vx underground](https://www.vx-underground.org/) | Major ransomware repository |
 | [ContiNews ](https://continewsnv5otx5kaoje7krkto2qbu3gtqef22mnr7eaxw3y6ncz3ad.onion.ly/) | Enterprises leaks |
 

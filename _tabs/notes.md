@@ -42,6 +42,15 @@ order: 2
 
 ---
 
+# Malware
+
+| **Link**   | **Description**    |
+|--------------- | --------------- |
+| [Safe Malware Handling and Sourcing](/notes/malware/safe-handling-sourcing) | Safe ways to handle with malware and some sources where you can get some samples |
+| [Basic Static Analysis](/notes/malware/basic-static-analysis) | First steps during a triage, without executing the binary | 
+
+---
+
 # Forensic 
 
 | **Link** | **Description**    |
