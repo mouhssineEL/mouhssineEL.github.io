@@ -73,13 +73,15 @@ The Linux host (REMnux) will be a Internet simulator, to make the malware thinks
 
 ## Windows
 
-Use a Windows 10 VM (not main OS) and using the [Flare VM](https://github.com/mandiant/flare-vm) github we will use this [PowerShell Script](https://raw.githubusercontent.com/mandiant/flare-vm/master/install.ps1) to make a full installation.
+Use a Windows 10 VM (not main OS) and using the [Flare VM](https://github.com/mandiant/flare-vm) github we will use this [PowerShell Script](https://raw.githubusercontent.com/mandiant/flare-vm/master/install.ps1) to make a full installation. Install then [pestudio](https://www.winitor.com/download2). 
+
+For my own choose, I add in the taskbar some programs like the file system, cutter, cmder, x34dbg, x64dbg, dnSpy... (customize then to make the letter bigger).
 
 ## For Linux 
 
 In this page, we can get the [REMnux](https://remnux.org/#distro) distro, for Malware Analysis. For simulate the network we will use `inetsim`. Go to the config file `/etc/inetsim/inetsim.conf`{: .filepath}. Uncomment the line:
 ```bash
-#start_service dns
+start_service dns
 ```
 
 In the **service_bind_address** uncomment the last line and change the IP to:
@@ -88,13 +90,19 @@ service_bind_address    0.0.0.0
 ```
 
 In the **dns_default_ip** uncomment the last line and change the IP to the REMnux IP:
-```
+```bash
 dns_default_ip          10.0.0.3
 ```
 
 Now run the service:
-```
+```console
 remnux@remnux:~$ inetsim
+```
+
+Then we can also download the **Mobile Security Framework - MobSF** from [Docker](https://hub.docker.com/r/opensecurity/mobile-security-framework-mobsf) as:
+```console
+remnux@remnux:~$ docker pull opensecurity/mobile-security-framework-mobsf
+remnux@remnux:~$ docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
 ```
 
 If we go to Internet in the Windows VM and navigate to the Linux IP with http, https... we would see some default pages, meaning the service is working. If we search anything in the http and add **/<something>.exe** it will download an inetsim binary, to simulate for the malware a file downloading. Now change the default DNS for the Windows Host to be the REMnux, so if we type any domain it will redirect us to the inetsim default page.

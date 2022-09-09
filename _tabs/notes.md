@@ -47,8 +47,12 @@ order: 2
 | **Link**   | **Description**    |
 |--------------- | --------------- |
 | [Safe Malware Handling and Sourcing](/notes/malware/safe-handling-sourcing) | Safe ways to handle with malware and some sources where you can get some samples |
-| [Basic Static Analysis](/notes/malware/basic-static-analysis) | First steps during a triage, without executing the binary | 
-| [Basic Dynamic Analysis](/notes/malware/basic-dynamic-analysis) | Seconds steps during the traige, executing the binary |
+| **Static Analysis** |
+| [Basic](/notes/malware/basic-static-analysis) | First steps during a triage, without executing the binary | 
+| [Advanced](/notes/malware/advanced-static-analysis) | Advanced steps during the static phase |
+| **Dynamic Analysis** |
+| [Basic](/notes/malware/basic-dynamic-analysis) | Seconds steps during the traige, executing the binary |
+| [Advanced](/notes/malware/advanced-dynamic-analysis) | Next steps for an advanced dynamic analysis |
 
 ---
 
