@@ -7,11 +7,9 @@ tags: [malware, windows]
 permalink: /triage/sillyputty
 ---
 
-| Name | SillyPutty |
-| --- | --- |
-| Sample Link | GitHub PMAT Husky |
-| MD5 Hash | 334a10500feb0f3444bf2e86ab2e76da |
-| Personal Rating* | 3.0 |
+| **Name**   | **Sample Link** | **Personal Rating** * | **MD5 Hash**
+|--------------- | --------------- |
+| WannaCry | [GitHub PMAT Husky](https://github.com/HuskyHacks/PMAT-labs/blob/main/labs/1-3.Challenge-SillyPutty/putty.7z) | 3.0 | 334a10500feb0f3444bf2e86ab2e76da |
 
 *This rating is take from the moment I did this analysis. In the time being, this can change because my skills have progressed. Only take it as a point of view of this moment.
 
