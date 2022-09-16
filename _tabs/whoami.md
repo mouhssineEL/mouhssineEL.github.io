@@ -1,3 +1,9 @@
+---
+title: Whoami
+order: 5
+icon: fas fa-info-circle
+---
+
 # Hey 👋
 
 <img align="right" alt="GIF" src="./img/icon.png" width="260" height="260" />

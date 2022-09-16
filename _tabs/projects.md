@@ -15,7 +15,7 @@ The aim of this project is to make a repository with many scripts orientated for
 
 Some of my own rice, some Linux design for a better experience:
 
-- Endeavour KDE Plasma
+- Endeavour KDE Plasma <br>
   [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/endeavour-plasma)
 
 
@@ -26,4 +26,4 @@ Some of my own rice, some Linux design for a better experience:
 
 # Flagware
 
-???
+Coming soon!
