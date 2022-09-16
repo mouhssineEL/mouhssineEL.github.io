@@ -11,17 +11,19 @@ The aim of this project is to make a repository with many scripts orientated for
 
 ---
 
-# Keter Vulnerability
-
-Keter Vulnerability is a website with multiple challenges in a CTF format.
-The aim of this project is train creating websites, but anyone is free to give it a try, even though the difficult is easy-medium.<br>
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=keter-vulnerability&theme=dark)](https://github.com/zeropio/keter-vulnerability)
-
----
-
 # Rice
 
 Some of my own rice, some Linux design for a better experience:
 
+- Endeavour KDE Plasma
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/endeavour-plasma)
+
+
 - Gnome 42 Kali <br>
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=gnome-kali_keter-rice&theme=dark)](https://github.com/zeropio/gnome-kali_keter-rice)
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/kali-gnome)
+
+---
+
+# Flagware
+
+???
