@@ -6,7 +6,6 @@ icon: fas fa-info-circle
 
 # Hey 👋
 
-<img align="right" alt="GIF" src="./img/icon.png" width="260" height="260" />
 <div id="badges" align="center">
       <a href="https://www.linkedin.com/in/emilio-s%C3%A1nchez-garc%C3%ADa/">
         <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white"
