@@ -215,8 +215,6 @@ It should be noted that some applications use reset tokens as actual temporary p
 
 ---
 
-#
-
 ### Weak Cryptography
 
 Even cryptographically generated tokens could be predictable. It has been observed that some developers try to create their own crypto routine, often resorting to security through obscurity processes. Rolling your own encryption is never a good idea. To stay on the safe side, we should always use modern and well-known encryption algorithms that have been heavily reviewed.
