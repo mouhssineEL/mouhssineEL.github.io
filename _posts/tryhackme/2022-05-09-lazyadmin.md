@@ -2,7 +2,7 @@
 title: TryHackMe | LazyAdmin
 author: Zeropio
 date: 2022-05-09
-categories: [TryHackMe, easy-room]
+categories: [TryHackMe, Rooms]
 tags: [thm, linux]
 permalink: /tryhackme/lazyadmin
 ---

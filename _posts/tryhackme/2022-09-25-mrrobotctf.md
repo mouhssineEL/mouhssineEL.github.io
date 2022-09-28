@@ -2,7 +2,7 @@
 title: TryHackMe | Mr Robot CTF
 author: Zeropio
 date: 2022-09-25
-categories: [TryHackMe, medium-room]
+categories: [TryHackMe, Rooms]
 tags: [thm, linux]
 permalink: /tryhackme/mr-robot-ctf
 ---
