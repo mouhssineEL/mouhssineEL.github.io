@@ -1,7 +1,7 @@
 ---
 title: TryHackMe | SimpleCTF
 author: Zeropio
-date: 2022-09-29
+date: 2022-09-28
 categories: [TryHackMe, Rooms]
 tags: [thm, linux]
 permalink: /tryhackme/simplectf

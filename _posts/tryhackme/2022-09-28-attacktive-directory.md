@@ -1,7 +1,7 @@
 ---
 title: TryHackMe | Attacktive Directory
 author: Zeropio
-date: 2022-09-29
+date: 2022-09-28
 categories: [TryHackMe, Rooms]
 tags: [thm, windows]
 permalink: /tryhackme/attacktive-directory

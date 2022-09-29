@@ -51,7 +51,14 @@ Remember to download Burp (visiting `http://burp` with the proxy set) and ZAP (i
 
 ## Rockyou 
 
-Unzip rockyou (`sudo gzip -d /usr/share/wordlist/rockyou.txt.gz`)
+Unzip rockyou (`sudo gzip -d /usr/share/wordlists/rockyou.txt.gz`)
+
+## CPU
+
+For CPU usage in the machine (for hashcat) we need to install:
+```
+zero@pio$ sudo apt install libhwloc-dev ocl-icd-dev ocl-icd-opencl-dev pocl-opencl-icd
+```
 
 ## Update the system
 
