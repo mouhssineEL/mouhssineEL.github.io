@@ -121,6 +121,7 @@ icon: fas fa-folder-open
 | **Forums** |
 | [breached](https://breached.to/) | Forum for breached data |
 | [Guided Hacking](https://guidedhacking.com/) | Forum for game hacking |
+| [Doxbin](https://doxbin.com/) | Doxing page (be careful) |
 | **Ransomgroups** |
 | [Ransomwiki](https://darkfeed.io/ransomwiki/) | Info about major ransom groups |
 | [ContiNews ](https://continewsnv5otx5kaoje7krkto2qbu3gtqef22mnr7eaxw3y6ncz3ad.onion.ly/) | Enterprises leaks |
