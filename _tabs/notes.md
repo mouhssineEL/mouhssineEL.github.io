@@ -66,6 +66,7 @@ order: 2
 | [Images](/notes/forensic/images) | Images analysis |
 | [Linux Forensic](/notes/forensic/linux)  | Forensic for Linux   |
 | [Windows Forensic](/notes/forensic/windows)   | Forensic for Windows   |
+| [USB](/notes/forensic/usb) | Forensics for an USB |
 
 ---
 

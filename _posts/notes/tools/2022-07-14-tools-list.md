@@ -13,39 +13,40 @@ This are my personal selection of **must have** tools for pentesting, bug bounty
 
 This is the path I choose while setting a Kali:
 
-## Must have tools
+## Tools 
 
+### Must have tools
+
+This are a pack of tools I always use. Here are the basic utilities:
 ```
-netcat
-curl
-nmap
-hashcat
-ffuf
-hydra
-zaproxy
-maltego
-seclists
-nvim
-smtp-user-enum 
-eyewitness
-crackmapexec
+zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip
 ```
 
-## Made tools
+And here the tools:
+```
+zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries
+```
+
+### Made tools
 
 Use impacket tools from any path:
 ```console
 zero@pio$ git clone https://github.com/SecureAuthCorp/impacket
-zero@pio$ sudo python3 -m pip install .
+zero@pio$ cd impacket; sudo python3 -m pip install .
 ```
+
+> Maybe you need to install crackmapexec after Impacket.
+{: .prompt-tip}
 
 Use kerbrute from any path:
 ```console
 zero@pio$ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
-zero@pio$ chmod + x ./kerbrute_linux_amd64; sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
+zero@pio$ chmod +x ./kerbrute_linux_amd64; sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
 ```
 
-## Certs 
+## Firefox
+
+Add the **Wappalyzer**, **FoxyProxy** and **Cookie Editor** to Firefox. Remove the `Ask to save login passwords...` and change the browser by DuckDuckGo.
 
 Remember to download Burp (visiting `http://burp` with the proxy set) and ZAP (inside Settings) certs for the browser and install them.
 
