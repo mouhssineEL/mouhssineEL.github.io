@@ -4,6 +4,23 @@ icon: fas fa-sticky-note
 order: 2
 ---
 
+# Vulnerabilities
+
+| **Link**   | **Description**    |
+|--------------- | --------------- |
+| [SQL Injection](/notes/vulnerabilities/sqli)   | Info about SQLi   |
+| [Cross Site Scripting](/notes/vulnerabilities/xss) | Info about XSS |
+| [File Inclusion](/notes/vulnerabilities/file-inclusion) | Info about LFI and RFI |
+| [Session Security](/notes/vulnerabilities/session-security) | Session security, hijacking, XSRF and CSRF |
+| [Buffer Overflow Linux](/notes/vulnerabilities/buffer-overflow-linux) | Buffer Overflow for Linux |
+| [Buffer Overflow Windows](/notes/vulnerabilities/buffer-overflow-windows) | Buffer Overflow for Windows |
+| [Command Injections](/notes/vulnerabilities/command-injections) | Performing commands injections |
+| [File Upload](/notes/vulnerabilities/file-upload) | File Upload Attacks |
+| [Web Attacks](/notes/vulnerabilities/web-attacks) | HTTP Verb Tampering, IDOR and XXE |
+| [Server Side Attacks](/notes/vulnerabilities/server-side-attacks) | Server Side Attacks: SSRF, SSI, ESI and SSTI |
+| [Others](/notes/vulnerabilities/others) | Info about some vulnerabilities (Shellshock, Type Juggling, POA...) |
+
+---
 
 # Web 
 
@@ -42,23 +59,6 @@ order: 2
 
 ---
 
-# Malware
-
-| **Link**   | **Description**    |
-|--------------- | --------------- |
-| [Safe Malware Handling and Sourcing](/notes/malware/safe-handling-sourcing) | Safe ways to handle with malware and some sources where you can get some samples |
-| [Types](/notes/malware/types) | Types of malware |
-| [Sandboxes](/notes/malware/sandboxes) | Some sandboxes examples |
-| [Yara](/notes/malware/yara-rules) | Yara rules for malware |
-| **Static Analysis** |
-| [Basic](/notes/malware/basic-static-analysis) | First steps during a triage, without executing the binary | 
-| [Advanced](/notes/malware/advanced-static-analysis) | Advanced steps during the static phase |
-| **Dynamic Analysis** |
-| [Basic](/notes/malware/basic-dynamic-analysis) | Seconds steps during the traige, executing the binary |
-| [Advanced](/notes/malware/advanced-dynamic-analysis) | Next steps for an advanced dynamic analysis |
-
----
-
 # Forensic 
 
 | **Link** | **Description**    |
@@ -79,24 +79,6 @@ order: 2
 
 ---
 
-# Vulnerabilities
-
-| **Link**   | **Description**    |
-|--------------- | --------------- |
-| [SQL Injection](/notes/vulnerabilities/sqli)   | Info about SQLi   |
-| [Cross Site Scripting](/notes/vulnerabilities/xss) | Info about XSS |
-| [File Inclusion](/notes/vulnerabilities/file-inclusion) | Info about LFI and RFI |
-| [Session Security](/notes/vulnerabilities/session-security) | Session security, hijacking, XSRF and CSRF |
-| [Buffer Overflow Linux](/notes/vulnerabilities/buffer-overflow-linux) | Buffer Overflow for Linux |
-| [Buffer Overflow Windows](/notes/vulnerabilities/buffer-overflow-windows) | Buffer Overflow for Windows |
-| [Command Injections](/notes/vulnerabilities/command-injections) | Performing commands injections |
-| [File Upload](/notes/vulnerabilities/file-upload) | File Upload Attacks |
-| [Web Attacks](/notes/vulnerabilities/web-attacks) | HTTP Verb Tampering, IDOR and XXE |
-| [Server Side Attacks](/notes/vulnerabilities/server-side-attacks) | Server Side Attacks: SSRF, SSI, ESI and SSTI |
-| [Others](/notes/vulnerabilities/others) | Info about some vulnerabilities (Shellshock, Type Juggling, POA...) |
-
----
-
 # Tools 
 
 | **Link**   | **Description**    |
@@ -113,9 +95,34 @@ order: 2
 
 ---
 
+# Malware
+
+| **Link**   | **Description**    |
+|--------------- | --------------- |
+| [Safe Malware Handling and Sourcing](/notes/malware/safe-handling-sourcing) | Safe ways to handle with malware and some sources where you can get some samples |
+| [Types](/notes/malware/types) | Types of malware |
+| [Sandboxes](/notes/malware/sandboxes) | Some sandboxes examples |
+| [Yara](/notes/malware/yara-rules) | Yara rules for malware |
+| **Static Analysis** |
+| [Basic](/notes/malware/basic-static-analysis) | First steps during a triage, without executing the binary | 
+| [Advanced](/notes/malware/advanced-static-analysis) | Advanced steps during the static phase |
+| **Dynamic Analysis** |
+| [Basic](/notes/malware/basic-dynamic-analysis) | Seconds steps during the traige, executing the binary |
+| [Advanced](/notes/malware/advanced-dynamic-analysis) | Next steps for an advanced dynamic analysis |
+
+---
+
+# Blue Team
+
+| **Link**   | **Description**    |
+|--------------- | --------------- |
+| **Proxy** |
+| [Squid](/notes/blueteam/squid) | Installation and usage of Squid |
+
+---
+
 # Languages 
 
 | **Link**   | **Description**    |
 |--------------- | --------------- |
 | [Bash](/notes/languages/bash-scripting)   | Scripting with bash   |
-
