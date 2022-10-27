@@ -11,9 +11,26 @@ The aim of this project is to make a repository with many scripts orientated for
 
 ---
 
+# Flagware
+
+Coming soon!
+
+
+---
+
+# Glup Suite
+
+Coming soon!
+
+---
+
 # Rice
 
 Some of my own rice, some Linux design for a better experience:
+
+
+- Arcolinux KDE Plasma <br>
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/arcolinux-kde)
 
 - Endeavour KDE Plasma <br>
   [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/endeavour-plasma)
@@ -21,9 +38,3 @@ Some of my own rice, some Linux design for a better experience:
 
 - Gnome 42 Kali <br>
   [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/kali-gnome)
-
----
-
-# Flagware
-
-Coming soon!
