@@ -18,17 +18,17 @@ This is the path I choose while setting a Kali:
 ### Must have tools
 
 This are a pack of tools I always use. Here are the basic utilities:
-```
-zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip rpcclient samba-client python3-ldap3 python3-yaml python3-impacket python3-venv freerdp2-x11
+```console
+zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip samba-client python3-ldap3 python3-yaml python3-impacket python3-venv freerdp2-x11
 ```
 
 Here the tools:
-```
-zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz
+```console
+zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz hash-identifier
 ```
 
 Python tools:
-```
+```console
 zero@pio$ pip install pypykatz pycrypto
 ```
 

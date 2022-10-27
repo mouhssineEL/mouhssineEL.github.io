@@ -99,6 +99,7 @@ icon: fas fa-folder-open
 | [vx underground](https://www.vx-underground.org/) | Major ransomware repository |
 | [theZoo](https://thezoo.morirt.com/) | A repository of LIVE malwares for your own joy and pleasure |
 | [zeltser](https://zeltser.com/) | repository of malware repositories |
+| [MalwareBazar](https://bazaar.abuse.ch/) | Project from abuse.ch with the goal of sharing malware samples |
 
 ---
 
