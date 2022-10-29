@@ -58,6 +58,7 @@ icon: fas fa-folder-open
 | [publicwww](https://publicwww.com/) | Source code |
 | [IntelX](https://intelx.io/) | OSINT |
 | [Wiglet](https://wigle.net/) | Wifi Networks |
+| [firebounty](https://firebounty.com/) | VDP search engine |
 | **Crypto** |
 | [CyberChef](https://icyberchef.com/) | Major encrypter and decrypter |
 | [Soumya decoder](https://decode.soumya.dev/) | ROT13 decoder |
