@@ -19,19 +19,18 @@ This is the path I choose while setting a Kali:
 
 This are a pack of tools I always use. Here are the basic utilities:
 ```console
-zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip samba-client python3-ldap3 python3-yaml python3-impacket python3-venv freerdp2-x11
+zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip samba-client python3-ldap3 python3-yaml python3-impacket python3-venv freerdp2-x11 build-essential apt-utils cmake libfontconfig1 libglu1-mesa-dev libgtest-dev libspdlog-dev libboost-all-dev libncurses5-dev libgdbm-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev mesa-common-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5websockets5 libqt5websockets5-dev qtdeclarative5-dev golang-go qtbase5-dev libqt5websockets5-dev libspdlog-dev python3-dev libboost-all-dev mingw-w64 nasm 
 ```
 
 Here the tools:
 ```console
-zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz hash-identifier
+zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz hash-identifier whatweb libimage-exiftool-perl foremost
 ```
 
 Python tools:
 ```console
 zero@pio$ pip install pypykatz pycrypto
 ```
-
 
 ### Made tools
 
@@ -80,6 +79,24 @@ zero@pio$ sudo apt install libhwloc-dev ocl-icd-dev ocl-icd-opencl-dev pocl-open
 
 ```console
 zero@pio$ sudo apt update --fix-missing; sudo apt upgrade -y; sudo apt autoremove -y; sudo apt autoclean -y
+```
+
+## C2
+
+### Covenant
+
+In another machine we will build a Debian Server. Now we will follow the [Covenant installation](https://github.com/cobbr/Covenant/wiki/Installation-And-Startup) with Docker. To launch it:
+```console
+zeroc2@c2server$ docker run -it -p 7443:7443 -p 80:80 -p 443:443 --name covenant -v /home/zeroc2/Covenant/Covenant/Data:/app/Data covenant
+```
+
+### Havoc
+
+Follow the installation in the server for the **TeamServer** and the same for the **Client** in the Kali for [Havoc](https://github.com/HavocFramework/Havoc/blob/main/WIKI.MD#install).
+
+Once installed, modify the `profiles/havoc.yaotl`{: .filepath} to create or own users. To launch the C2, inside `Havoc/TeamServer`{: .filepath}:
+```console
+zeroc2@c2server$ sudo ./teamserver server --profile ./profiles/havoc.yaotl -v --debug
 ```
 
 ---
