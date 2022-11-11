@@ -24,12 +24,31 @@ zero@pio$ sudo apt install curl nmap neovim git sqsh pip python3-pip samba-clien
 
 Here the tools:
 ```console
-zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz hash-identifier whatweb libimage-exiftool-perl foremost
+zero@pio$ sudo apt install nmap hashcat ffuf hydra zaproxy maltego seclists enum4linux smbclient eyewitness john crackmapexec evil-winrm sqlmap burpsuite chisel responder hydra wpscan exploitdb bloodhound neo4j wordlists windows-binaries mimikatz hash-identifier whatweb libimage-exiftool-perl foremost netdiscover
 ```
 
 Python tools:
 ```console
 zero@pio$ pip install pypykatz pycrypto
+```
+
+### Docker Tools
+
+First install Docker:
+```console
+zero@pio$ sudo apt install -y docker.io
+zero@pio$ sudo systemctl enable docker --now
+zero@pio$ sudo usermod -aG docker $USER
+```
+
+Then we install rustscan:
+```console
+zero@pio$ rustscan/rustscan:latest
+```
+
+To use it add the alias:
+```
+alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:alpine'
 ```
 
 ### Made tools
@@ -101,7 +120,7 @@ zeroc2@c2server$ sudo ./teamserver server --profile ./profiles/havoc.yaotl -v --
 
 ---
 
-# For Malware Analysis 
+# For Malware 
 
 Always keep these machines in a VM, for a safe controlled enviroment. Also keeps them host-only in a isolated network, recommendable to be a different IP range from the home network (for example **10.0.0....**). You may need to add the following lines to a created file `/etc/vbox/networks.conf`{: .filepath} to could be able to create the network:
 ```
@@ -113,9 +132,23 @@ The Linux host (REMnux) will be a Internet simulator, to make the malware thinks
 
 ## Windows
 
-Use a Windows 10 VM (not main OS) and using the [Flare VM](https://github.com/mandiant/flare-vm) github we will use this [PowerShell Script](https://raw.githubusercontent.com/mandiant/flare-vm/master/install.ps1) to make a full installation. Install then [pestudio](https://www.winitor.com/download2). 
+With a Windows 10 VM we will install:
+```
+x32dbg
+x64dbg
+dnSpy
+Sysinternals
+cutter
+PE-bear
+Resource Hacker
+IDA Freeware
+Process Hacker 2
+Visual Studio (C++)
+Notepadd++
+Cmder
+```
 
-For my own choose, I add in the taskbar some programs like the file system, cutter, cmder, x34dbg, x64dbg, dnSpy... (customize then to make the letter bigger).
+Also disable the Windows Updates, Cortana and Defender.
 
 ## For Linux 
 

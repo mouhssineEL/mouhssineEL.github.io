@@ -79,7 +79,21 @@ icon: fas fa-folder-open
 
 ---
 
-# Training, CTFs, Malware...
+# Malware
+
+| **Link** | **Description** |
+| **Samples** |
+| [vx underground](https://www.vx-underground.org/) | Major ransomware repository |
+| [theZoo](https://thezoo.morirt.com/) | A repository of LIVE malwares for your own joy and pleasure |
+| [zeltser](https://zeltser.com/) | repository of malware repositories |
+| [MalwareBazar](https://bazaar.abuse.ch/) | Project from abuse.ch with the goal of sharing malware samples |
+| **Resources** |
+| [MalAPI](https://malapi.io/) | Malicious Windows API calls |
+| [LOTS](https://lots-project.com/) | Living Off Trusted Sites |
+
+---
+
+# Training and CTFs
 
 | **Link** | **Description** |
 |----------|-----------------|
@@ -96,11 +110,6 @@ icon: fas fa-folder-open
 | [CTF Challenge](https://ctfchallenge.com/) | CTFs challenges |
 | **Other** |
 | [Hackrocks](https://hackrocks.com/) | Spanish page for learn |
-| **Malware** |
-| [vx underground](https://www.vx-underground.org/) | Major ransomware repository |
-| [theZoo](https://thezoo.morirt.com/) | A repository of LIVE malwares for your own joy and pleasure |
-| [zeltser](https://zeltser.com/) | repository of malware repositories |
-| [MalwareBazar](https://bazaar.abuse.ch/) | Project from abuse.ch with the goal of sharing malware samples |
 
 ---
 
@@ -124,6 +133,8 @@ icon: fas fa-folder-open
 | [breached](https://breached.to/) | Forum for breached data |
 | [Guided Hacking](https://guidedhacking.com/) | Forum for game hacking |
 | [Doxbin](https://doxbin.com/) | Doxing page (be careful) |
+| [XSS.is](https://xss.is/) | Russian forum |
+| [UpdatedSecurity](https://updatedsecurity.com/) | Infosec forum |
 | **Ransomgroups** |
 | [Ransomwiki](https://darkfeed.io/ransomwiki/) | Info about major ransom groups |
 | [ContiNews ](https://continewsnv5otx5kaoje7krkto2qbu3gtqef22mnr7eaxw3y6ncz3ad.onion.ly/) | Enterprises leaks |
