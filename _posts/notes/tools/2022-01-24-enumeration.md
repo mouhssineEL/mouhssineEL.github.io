@@ -1,11 +1,34 @@
 ---
-title: Notes | Nmap
+title: Notes | Enumeration Tools
 author: Zeropio
 date: 2022-01-24
 categories: [Notes, Tools]
 tags: [tool, nmap]
-permalink: /notes/tools/nmap
+permalink: /notes/tools/enumeration
 ---
+
+# RustScan
+
+It is recommended to make an alias like `alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:latest'`.
+
+The basic syntax is:
+```console
+zero@pio$ rustscan -a <TARGET>
+```
+
+We can pass an IP, domain, file with both, subnets...
+
+To perform against ports, the syntax is similar to nmap:
+```console
+zero@pio$ rustscan -a <TARGET> -p <PORT,PORT>
+zero@pio$ rustscan -a <TARGET> --range <NUMBER-NUMBER>
+```
+
+We can use a similar syntax, like `-A` or `-sC`.
+
+---
+
+# Nmap
 
 **Network Mapper** (Nmap) is an open-source network analysis and security auditing tool written in C, C++, Python, and Lua. It is designed to scan networks and identify which hosts are available on the network using raw packets, and services and applications, including the name and version, where possible. It can also identify the operating systems and versions of these hosts. Besides other features, Nmap also offers scanning capabilities that can determine if packet filters, firewalls, or intrusion detection systems (IDS) are configured as needed.
 
@@ -30,7 +53,7 @@ Nmap comes with default options, for example the TCP-SYN scan (`-sS`). This opti
 
 ---
 
-# Host Discovery 
+## Host Discovery 
 
 Nmap can help discovering all the hosts up through a net. The most effective host discovery method is to use **ICMP echo requests**.
 
@@ -66,7 +89,7 @@ zero@pio$ sudo nmap <ip> -sn -oA <file name> -PE --packet-trace --disable-arp-pi
 
 ---
 
-# Host and Port Scanning
+## Host and Port Scanning
 
 The scanned ports can have six different states:
 
@@ -79,7 +102,7 @@ The scanned ports can have six different states:
 | `open|filtered` | If we do not get a response for a specific port, Nmap will set it to that state. This indicates that a firewall or packet filter may protect the port |
 | `closed|filtered` | in the IP ID idle scans, indicates that it was impossible to determine if the scanned port is closed or filtered by a firewall |
 
-## Discovering Open TCP Ports 
+### Discovering Open TCP Ports 
 
 By default, Nmap scans the **top 1000 TCP ports** with the **SYN scan** (`-sS`). This SYN scan is set only to default when we run it as **root** because of the socket permissions required to create raw TCP packets. Otherwise, the **TCP scan** (`-sT`) is performed by default.
 
@@ -90,13 +113,13 @@ zero@pio$ sudo nmap <ip> --top-ports=10
 
 If we want to have a clear view of the SYN scan we can disabled everything, the ICMP echo request (`-Pn`), DNS resolution (`-n`) and ARP ping scan (`--disable-arp-ping`).
 
-## Discovering Open UDP Ports 
+### Discovering Open UDP Ports 
 
 To check by UDP ports we will use the option `-sU`.
 
 ---
 
-# Saving the Results 
+## Saving the Results 
 
 It's important to save the result of our scans for later enumeration. Nmap provides us three types of file:
 - **Normal output**(`-oN`): with the .nmap file extension
@@ -115,7 +138,7 @@ zero@pio$ xsltproc target.xml -o target.html
 
 ---
 
-# Service Enumeration 
+## Service Enumeration 
 
 It is essential to determine the application and its version as accurately as possible. We can use the `-sV` flag to get the service version. With the options `-v`, `-vv` and `-vvv` we can increase the verbosity.
 
@@ -134,7 +157,7 @@ zero@pio$ nmap -sV --script=banner <target>
 
 ---
 
-# Nmap Scripting Engine 
+## Nmap Scripting Engine 
 
 Nmap Scripting Engine (**NSE**) provides us with the possibility to create scripts in Lua for interaction with certain services. There are a total of 14 categories into which these scripts can be divided: 
 
@@ -182,7 +205,7 @@ zero@pio$ sudo nmap --script banner.smtp-commands <ip>
 
 We can also run the **aggressive scan** (`-A`) which do all types of scan-
 
-## Vulnerability Assessment 
+### Vulnerability Assessment 
 
 ```console
 zero@pio$ sudo nmap -sV --script vuln <ip>
@@ -192,32 +215,32 @@ All the scripts are located in `/usr/share/nmap/scripts/`{: .filepath}.
 
 ---
 
-# Performance 
+## Performance 
 
 Scanning performance plays a significant role when we need to scan an extensive network or are dealing with low network bandwidth. We have many options to tell Nmap host fast (`-T <1-5>`), which frequency (`--min-parallelism <number>`), which timeouts (`--max-rtt-timeout <time>`), packets sent simultaneously (`--min-rate <number>`) or the number of retries (`--max-retries <number>`).
 
-## Timeouts 
+### Timeouts 
 
 The packets send by Nmap takes some time (**Round-Trip-Time - RTT**). Nmap start with a timeout of 100ms (`--min-RTT-timeout`). An example of an optimize scan:
 ```console
 zero@pio$ sudo nmap <target> --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
 ```
 
-## Max Retries 
+### Max Retries 
 
 Another way to increase the scans' speed is to specify the retry rate of the sent packets. The default value for the retry rate is **10**, so if Nmap does not receive a response for a port, it will not send any more packets to the port and will be skipped.
 ```console
 zero@pio$ sudo nmap <target> --max-retries 0
 ```
 
-## Rates 
+### Rates 
 
 If we know the network bandwidth, we can work with the rate of packets sent, which significantly speeds up our scans with Nmap.
 ```console
 zero@pio$ sudo nmap <target> --min-rate 300
 ```
 
-## Timing 
+### Timing 
 
 Nmap offers six different timing templates for us to use. These values (**0-5**) determine the aggressiveness of our scans. The default is `-T 3`. These are the others:
 - `-T 0` / `-T paranoid`
@@ -233,11 +256,11 @@ zero@pio$ sudo nmap <target> -T 5
 
 ---
 
-# Firewall and IDS/IPS Evasion
+## Firewall and IDS/IPS Evasion
 
 Nmap gives us many different ways to bypass firewalls rules and IDS/IPS.
 
-## Determine Firewalls and Their Rules 
+### Determine Firewalls and Their Rules 
 
 The packets can either be **dropped**, or **rejected**. The **dropped** packets are ignored, and no response is returned from the host. This is different for **rejected** packets that are returned with an **RST flag**. These packets contain different types of **ICMP error codes** or contain nothing at all. Such erros can be:
 - Net Unreachable
@@ -301,11 +324,11 @@ MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
 Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
 ```
 
-## Detect IDS/IPS 
+### Detect IDS/IPS 
 
 Unlike firewalls and their rules, the detection of IDS/IPS systems is much more difficult because these are passive traffic monitoring systems. IDS systems examine all connections between hosts. If the IDS finds packets containing the defined contents or specifications, the administrator is notified and takes appropriate action in the worst case. IPS systems take measures configured by the administrator independently to prevent potential attacks automatically. It is essential to know that IDS and IPS are different applications and that IPS serves as a complement to IDS.
 
-## Decoys 
+### Decoys 
 
 The **Decoy scanning method** (`-D`) generates various random IP addresses inserted into the IP header to disguise the origin of the packet sent.
 
@@ -345,7 +368,7 @@ OS detection performed. Please report any incorrect results at https://nmap.org/
 Nmap done: 1 IP address (1 host up) scanned in 4.11 seconds
 ```
 
-## DNS Proxying
+### DNS Proxying
 
 Nmap gives us a way to specify DNS servers ourselves (`--dns-server <ns>,<ns>`), this could be fundamental in a **DMZ** (demilitarized zone). The company's DNS servers are usually more trusted than those from the Internet. So, for example, we could use them to interact with the hosts of the internal network. As another example, we can use **TCP port 53** as a source port (`--source-port`) for our scans.
 ```console
@@ -365,7 +388,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.08 seconds
 
 ---
 
-# Flags
+## Flags
 
 | **Flag**   | **Description**    |
 |------------| --------------- |

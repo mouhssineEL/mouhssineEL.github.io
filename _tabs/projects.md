@@ -11,20 +11,14 @@ The aim of this project is to make a repository with many scripts orientated for
 
 ---
 
-# Flagware
+# hashGo
 
-Coming soon!
-
-
----
-
-# Glup Suite
-
-Coming soon!
+Tool written in Go for cracking hashes.<br>
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=hashGo&theme=dark)](https://github.com/zeropio/hashGo)
 
 ---
 
-# Rice
+# Ricing
 
 Some of my own rice, some Linux design for a better experience:
 

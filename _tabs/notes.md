@@ -86,7 +86,7 @@ order: 2
 | [Tools](/notes/tools)   | Set of personal must-have tools   |
 | [Commands](/notes/tools/commands) | Variaty of commands for multiple purposes |
 | [Dorks](/notes/tools/dorks) | Dorks for many search engines |
-| [Nmap](/notes/tools/nmap) | Info about Nmap |
+| [Enumeration](/notes/tools/enumeration) | Info about Nmap and Rustscan |
 | [Metasploit](/notes/tools/metasploit) | Metasploit usage |
 | [Brute Forcing](/notes/tools/brute-forcing) | Set of tools for brute forcing |
 | [Hashcat](/notes/tools/hashcat) | Usage of Hashcat |
