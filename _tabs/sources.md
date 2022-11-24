@@ -90,6 +90,11 @@ icon: fas fa-folder-open
 | **Resources** |
 | [MalAPI](https://malapi.io/) | Malicious Windows API calls |
 | [LOTS](https://lots-project.com/) | Living Off Trusted Sites |
+| **Development** |
+| [SpotThePlanet](https://www.ired.team/) | Red teaming notes |
+| [pre.empt.dev](https://pre.empt.dev/) | C2 Architecture |
+| [OffensiveNim](https://github.com/byt3bl33d3r/OffensiveNim) | Weaponizing Nim |
+| [Awesome Malware Development](https://github.com/rootkit-io/awesome-malware-development) | Organized list of malware development resources |
 
 ---
 
