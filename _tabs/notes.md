@@ -92,6 +92,7 @@ order: 2
 | [Hashcat](/notes/tools/hashcat) | Usage of Hashcat |
 | [SQLMap](/notes/tools/sqlmap) | Usage of SQLMap |
 | [Web Proxies](/notes/tools/web-proxies) | Usage of Burp and ZAP |
+| [Forensic Tools](/notes/tools/forensic) | Usage of some forensic tools |
 
 ---
 
@@ -125,4 +126,5 @@ order: 2
 
 | **Link**   | **Description**    |
 |--------------- | --------------- |
-| [Bash](/notes/languages/bash-scripting)   | Scripting with bash   |
+| [Bash](/notes/languages/bash-scripting)   | Scripting with bash |
+| [Rust](/notes/languages/rust) | Basic usage of Rust in CLI |

@@ -41,7 +41,7 @@ zero@pio$ sudo systemctl enable docker --now
 zero@pio$ sudo usermod -aG docker $USER
 ```
 
-Then we install rustscan:
+Then we install **rustscan**:
 ```console
 zero@pio$ rustscan/rustscan:latest
 ```
@@ -49,6 +49,16 @@ zero@pio$ rustscan/rustscan:latest
 To use it add the alias:
 ```
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:alpine'
+```
+
+Now we install **crackmapexec**:
+```console
+zero@pio$ docker run -it --entrypoint=/bin/sh --name crackmapexec -v ~/.cme:/root/.cme byt3bl33d3r/crackmapexec
+```
+
+Then add the alias:
+```
+alias cme='docker start crackmapexec; docker exec -it crackmapexec sh'
 ```
 
 ### Made tools
