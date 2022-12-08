@@ -570,19 +570,4 @@ zero@pio$ openssl passwd [password]
 
 Then we replace the **x** in the same line as the root with the hash, now we can log as root.
 
----
-
-# Git 
-
-Often we can find some git projects left on the machine. This gits can provide a really helpful amount of information. We can search for all the git folders with:
-```console
-zero@pio$ find / 2>/dev/null | grep -w '.git'
-```
-
-There we can start enumerating:
-```console
-zero@pio$ git log # display commits
-zero@pio$ git show <CODE> # check changes from each commit
-```
-
 

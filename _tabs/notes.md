@@ -83,7 +83,6 @@ order: 2
 
 | **Link**   | **Description**    |
 |--------------- | --------------- |
-| [Tools](/notes/tools)   | Set of personal must-have tools   |
 | [Commands](/notes/tools/commands) | Variaty of commands for multiple purposes |
 | [Dorks](/notes/tools/dorks) | Dorks for many search engines |
 | [Enumeration](/notes/tools/enumeration) | Info about Nmap and Rustscan |
