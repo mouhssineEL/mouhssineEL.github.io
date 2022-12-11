@@ -14,6 +14,7 @@ icon: fas fa-folder-open
 | [Privacy Guides](https://privacyguides.org/) | Guide for a better privacy |
 | [Distrotest](https://distrotest.net/index.php) | Forum for Linux Distro |
 | [HackTricks](https://book.hacktricks.xyz/) | Many information about pentesting and CTFs |
+| [SpotThePlanet](https://www.ired.team/) | Red teaming notes |
 | [SecurityZines](https://securityzines.com/) | Cybersec terms |
 | [TheHackerRecipes](https://www.thehacker.recipes/) | More hacking information |
 | [samsclass](https://samsclass.info/127/ED_2020.shtml) | More hacking information |
@@ -91,7 +92,6 @@ icon: fas fa-folder-open
 | [MalAPI](https://malapi.io/) | Malicious Windows API calls |
 | [LOTS](https://lots-project.com/) | Living Off Trusted Sites |
 | **Development** |
-| [SpotThePlanet](https://www.ired.team/) | Red teaming notes |
 | [pre.empt.dev](https://pre.empt.dev/) | C2 Architecture |
 | [OffensiveNim](https://github.com/byt3bl33d3r/OffensiveNim) | Weaponizing Nim |
 | [Awesome Malware Development](https://github.com/rootkit-io/awesome-malware-development) | Organized list of malware development resources |
@@ -135,12 +135,11 @@ icon: fas fa-folder-open
 | [Wired](https://www.wired.com/category/security/) | Another security newspaper |
 | [Securib](https://securib.ee/) | Security newspaper |
 | **Forums** |
-| [breached](https://breached.to/) | Forum for breached data |
+| [breached](https://breached.vc/) | Forum for breached data |
 | [Guided Hacking](https://guidedhacking.com/) | Forum for game hacking |
 | [Doxbin](https://doxbin.com/) | Doxing page (be careful) |
 | [XSS.is](https://xss.is/) | Russian forum |
 | [UpdatedSecurity](https://updatedsecurity.com/) | Infosec forum |
 | **Ransomgroups** |
 | [Ransomwiki](https://darkfeed.io/ransomwiki/) | Info about major ransom groups |
-| [ContiNews ](https://continewsnv5otx5kaoje7krkto2qbu3gtqef22mnr7eaxw3y6ncz3ad.onion.ly/) | Enterprises leaks |
 

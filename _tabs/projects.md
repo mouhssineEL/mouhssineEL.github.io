@@ -16,19 +16,3 @@ The aim of this project is to make a repository with many scripts orientated for
 Tool written in Go for cracking hashes.<br>
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=hashGo&theme=dark)](https://github.com/zeropio/hashGo)
 
----
-
-# Ricing
-
-Some of my own rice, some Linux design for a better experience:
-
-
-- Arcolinux KDE Plasma <br>
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/arcolinux-kde)
-
-- Endeavour KDE Plasma <br>
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/endeavour-plasma)
-
-
-- Gnome 42 Kali <br>
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zeropio&repo=dotfiles&theme=dark)](https://github.com/zeropio/dotfiles/tree/main/kali-gnome)
