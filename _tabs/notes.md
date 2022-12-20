@@ -26,7 +26,6 @@ order: 2
 | [Enumeration](/notes/system/ad-enumeration) | AD enumeration |
 | [Lateral Movement](/notes/system/ad-lateral-movement) | Lateral movement techniques |
 | [Domain Trust](/notes/system/ad-domain-trust) | Domain Trust Attacks |
-| [AD Enumeration & Attacks](/notes/system/ad-enum-attack) | Enumeration and attacks for Active Directory |
 | [Resources](/notes/system/ad-resources) | Resources for AD Pentesting |
 
 ---
