@@ -117,7 +117,7 @@ You can't access this shared folder because your organization's security policie
 
 If this happen we need to create it with credentials.
 ```console
-zero@pio$ sudo impacket-smbserver share -smb2support /tmp/smbshare -user test -password pass
+zero@pio$ sudo smbserver.py share -smb2support /tmp/smbshare -user test -password pass
 ```
 
 And then mount it:

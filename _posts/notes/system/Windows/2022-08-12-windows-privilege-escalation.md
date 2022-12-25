@@ -59,6 +59,12 @@ Using the `tasklist` command to look at running processes will give us a better 
 C:\zeropio> tasklist /svc
 ```
 
+If we don't have access for this we can use the PowerShell command `get-process`:
+```console
+C:\zeropio> get-process
+C:\zeropio> get-process -name <application>
+```
+
 We must be familiar with standard Windows processes like **Session Manager Subsystem** (**smss.exe**), **Client Server Runtime Subsystem** (**csrss.exe**), **WinLogon** (**winlogon.exe**), **Local Security Authority Subsystem Service** (**LSASS**), and **Service Host** (**svchost.exe**). Other processes such as **MsMpEng.exe** (**Windows Defender**) are interesting because they can help us map out what protections are in place on the target host that we may have to evade/bypass.
 
 The environment variables explain a lot about the host configuration, like **PATH**. To get a printout of them, Windows provides the `set` command. In addition to the PATH, set can also give up other helpful information such as the **HOME DRIVE**. Shares are utilized for home directories so the user can log on to other computers and have the same experience/files/desktop/etc. If a file is placed in `USERPROFILE\AppData\Microsoft\Windows\Start Menu\Programs\Startup`{: .filepath}, when the user logs into a different machine, this file will execute.
