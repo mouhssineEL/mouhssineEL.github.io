@@ -34,7 +34,7 @@
   --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, #0ced10bd 0%, #030203 100%);
+  --sidebar-bg: radial-gradient(circle, #0ced1038 0%, #030203 100%);
   --sidebar-muted-color: #6d6c6b;
   --sidebar-active-color: rgb(255 255 255 / 80%);
   --nav-cursor-color: rgb(183, 182, 182);
@@ -47,7 +47,7 @@
   // --sidebar-btn-bg: rgb(117 116 116 / 20%);
   /* Topbar */
   --topbar-text-color: var(--text-color);
-  --topbar-wrapper-bg: rgba(16, 163, 58, 0.979);
+  --topbar-wrapper-bg: radial-gradient(circle, #0ced1038 0%, #030203 100%);
   --search-wrapper-bg: rgba(27, 11, 23, 0.582);
   --search-wrapper-border-color: rgb(82, 245, 0);
   --search-icon-color: rgb(100, 102, 105);
