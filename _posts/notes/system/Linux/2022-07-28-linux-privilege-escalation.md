@@ -570,4 +570,12 @@ zero@pio$ openssl passwd [password]
 
 Then we replace the **x** in the same line as the root with the hash, now we can log as root.
 
+---
+
+# Network
+
+To check which ports are open in a system we can use:
+```console
+zero@pio$ nc -z -v 127.0.0.1 1-65535 2>&1 | grep -v 'Connection refused'
+```
 

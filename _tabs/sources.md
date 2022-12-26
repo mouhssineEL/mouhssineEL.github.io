@@ -1,7 +1,7 @@
 ---
 title: Sources
 order: 3
-icon: fas fa-folder-open
+icon: fa fa-globe
 ---
 
 # Major help

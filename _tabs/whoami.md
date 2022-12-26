@@ -1,7 +1,7 @@
 ---
 title: Whoami
 order: 5
-icon: fas fa-info-circle
+icon: fa fa-user
 ---
 
 # Hey 👋

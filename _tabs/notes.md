@@ -1,6 +1,6 @@
 ---
 title: Notes
-icon: fas fa-sticky-note
+icon: fa fa-sticky-note
 order: 2
 ---
 
