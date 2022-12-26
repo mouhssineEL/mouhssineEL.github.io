@@ -16,39 +16,39 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Europe/Madrid
+timezone: Africa/Casablanca
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Zeropio's Blog                          # the main title
+title: x4sh3s                          # the main title
 
-tagline: CyberSec Student   # it will display as the sub-title
+tagline: Cyber Security Researcher, Red Team Developer ...  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Personal blog, for writeups, own documentation and stuff.
+  A Blog where i share stuff that i learned, created or found related to red teaming and Cybersecurity In General ...
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'zeropio.github.io'
+url: 'https://x4sh3s.github.io'
 
 github:
-  username: zeropio             # change to your github username
+  username: x4sh3s             # change to your github username
 
 twitter:
-  username: ZeropioWasTaken            # change to your twitter username
+  username: x4sh3s            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: zeropio
-  email: zeropio@pm.me            # change to your email address
+  name: Brahim Chebli
+  email: brahim.chebli@etu.uae.ac.ma             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/zeropiowastaken      # change to your twitter homepage
-    - https://github.com/zeropio       # change to your github homepage
+    - https://twitter.com/x4sh3s      # change to your twitter homepage
+    - https://github.com/x4sh3s       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/brahim-chebli
 
 google_site_verification:               # fill in to your verification string
 
@@ -62,7 +62,7 @@ google_analytics:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
-# Prefer color scheme setting.
+# Prefer color s cheme setting.
 #
 # Note: Keep empty will follow the system prefer color by default,
 # and there will be a toggle to switch the theme between dark and light
@@ -80,19 +80,21 @@ theme_mode: dark  # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+
+# img_cdn: 'https://raw.githubusercontent.com/cotes2020/chirpy-images/main'
+img_cdn: '/assets/img'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/icon.png
+avatar: '/commons/avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
 
 comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: disqus # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
-    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: x4sh3s   # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
     repo:         # <gh-username>/<repo>
@@ -115,6 +117,9 @@ assets:
     # only works if `assets.self_host.enabled` is 'true'
     env:          # [development|production]
 
+pwa:
+  enabled: true   # the option for PWA feature
+
 paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
@@ -134,6 +139,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+  hidden_posts:
+    output: false
+
 
 defaults:
   - scope:
@@ -149,7 +157,7 @@ defaults:
   - scope:
       path: _drafts
     values:
-      comments: false
+      comments: true
   - scope:
       path: ''
       type: tabs             # see `site.collections`
@@ -182,6 +190,7 @@ exclude:
   - '*.gemspec'
   - tools
   - README.md
+  - CHANGELOG.md
   - LICENSE
   - gulpfile.js
   - node_modules

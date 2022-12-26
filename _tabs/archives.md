@@ -1,7 +1,7 @@
 ---
 layout: archives
 title: Archives
-icon: fa fa-archive
-order: 6
+icon: fas fa-archive
+order: 3
 ---
 
