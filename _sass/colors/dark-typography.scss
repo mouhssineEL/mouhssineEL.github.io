@@ -34,7 +34,7 @@
   --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, #0ced1038 0%, #030203 100%);
+  --sidebar-bg: radial-gradient(circle, #00140038 0%, #030203 100%);
   --sidebar-muted-color: #6d6c6b;
   --sidebar-active-color: rgb(255 255 255 / 80%);
   --nav-cursor-color: rgb(183, 182, 182);
@@ -72,8 +72,8 @@
   --toc-highlight: rgb(136, 199, 153);
   --tag-bg: rgb(41, 40, 40);
   --tag-hover: rgb(28, 46, 29);
-  --tb-odd-bg: rgba(42, 53, 43, 0.52); /* odd rows of the posts' table */
-  --tb-even-bg: rgb(31, 34, 31); /* even rows of the posts' table */
+  --tb-odd-bg: rgba(59, 59, 59, 0.52); /* odd rows of the posts' table */
+  --tb-even-bg: rgb(41, 41, 41); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
   --footnote-target-bg: rgb(63, 181, 77);
   --btn-share-color: #6c7d72;
