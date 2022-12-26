@@ -69,15 +69,15 @@
   --pin-color: inherit;
 
   /* Posts */
-  --toc-highlight: rgb(199, 136, 175);
+  --toc-highlight: rgb(136, 199, 153);
   --tag-bg: rgb(41, 40, 40);
-  --tag-hover: rgb(46, 28, 44);
-  --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
-  --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
+  --tag-hover: rgb(28, 46, 29);
+  --tb-odd-bg: rgba(42, 53, 43, 0.52); /* odd rows of the posts' table */
+  --tb-even-bg: rgb(31, 34, 31); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
-  --footnote-target-bg: rgb(63, 81, 181);
-  --btn-share-color: #6c757d;
-  --btn-share-hover-color: #bfc1ca;
+  --footnote-target-bg: rgb(63, 181, 77);
+  --btn-share-color: #6c7d72;
+  --btn-share-hover-color: #bfcac6;
   --relate-post-date: var(--text-muted-color);
   --card-bg: #212121;
   --card-border-color: rgb(0, 0, 0);
