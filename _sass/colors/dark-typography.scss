@@ -23,7 +23,7 @@
   --blockquote-text-color: rgb(117, 117, 117);
   --link-color: rgb(0, 254, 63);
   --link-underline-color: rgba(0, 254, 63, 0.715);
-  --button-bg: rgb(26, 255, 0);
+  --button-bg: rgba(26, 255, 0, 0.368);
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
@@ -62,7 +62,7 @@
   /* Home page */
   --post-list-text-color: rgb(175, 176, 177);
   --btn-patinator-text-color: var(--text-color);
-  --btn-paginator-hover-color: rgb(68, 55, 66);
+  --btn-paginator-hover-color: rgb(59, 68, 55);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
   --pin-bg: rgb(51, 31, 50);
@@ -79,8 +79,8 @@
   --btn-share-color: #6c757d;
   --btn-share-hover-color: #bfc1ca;
   --relate-post-date: var(--text-muted-color);
-  --card-bg: #2c222c;
-  --card-border-color: rgb(53, 53, 60);
+  --card-bg: #212121;
+  --card-border-color: rgb(0, 0, 0);
   --card-box-shadow: var(--main-wrapper-bg);
   --preview-img-bg: radial-gradient(circle, rgb(22 22 24) 0%, rgb(32 32 32) 100%);
   --kbd-wrap-color: #6a6a6a;
