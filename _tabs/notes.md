@@ -10,12 +10,19 @@ order: 2
 |--------------- | --------------- |
 | **General**  |
 | [Enumaration](/notes/system/enumeration) | Enumeration techniques and tools |
-| [Services](/notes/system/services) | Common services |
 | [Network](/notes/system/network) | Network aid |
 | [Shell](/notes/system/shell) | Reverse shell and more |
 | [File Transfer](/notes/system/transfer-files) | Help for transfer files |
 | [Password Attacks](/notes/system/password-attacks) | Remote, Windows, Linux password attacks and cracking |
 | [Pivoting, Tunneling, and Port Forwarding](/notes/system/pivoting-tunneling-portforwarding) | SSH Socket,... |
+| **Services** |
+| [SSH](/notes/system/ssh) | Attacking SSH |
+| [FTP](/notes/system/ftp) | Attacking FTP |
+| [SMB](/notes/system/smb) | Attacking SMB |
+| [RDP](/notes/system/rdp) | Attacking RDP |
+| [SQL](/notes/system/sql) | Attacking SQL databases |
+| [DNS](/notes/system/dns) | Attacking DNS |
+| [SMTP](/notes/system/smtp) | Attacking SMTP |
 | **Linux** |
 | [Linux Privilege Escalation](/notes/system/linux-privilege-escalation) | PE for Linux |
 | **Windows** |
@@ -84,7 +91,7 @@ order: 2
 
 | **Link** | **Description**    |
 |--------------- | --------------- |
-| [Images](/notes/forensic/images) | Images analysis |
+| [Files](/notes/forensic/files) | Files analysis |
 | [Linux Forensic](/notes/forensic/linux)  | Forensic for Linux   |
 | [Windows Forensic](/notes/forensic/windows)   | Forensic for Windows   |
 | [USB](/notes/forensic/usb) | Forensics for an USB |
@@ -131,3 +138,4 @@ order: 2
 |--------------- | --------------- |
 | [Bash](/notes/languages/bash-scripting)   | Scripting with bash |
 | [Rust](/notes/languages/rust) | Basic usage of Rust in CLI |
+| [.NET](/notes/languages/dotnet) | Some .NET info |
