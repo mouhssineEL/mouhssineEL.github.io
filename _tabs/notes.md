@@ -129,6 +129,7 @@ order: 2
 |--------------- | --------------- |
 | **Proxy** |
 | [Squid](/notes/blueteam/squid) | Installation and usage of Squid |
+| [Cisco](/notes/blueteam/cisco) | Cisco cheatsheet |
 
 ---
 
