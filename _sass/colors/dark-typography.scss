@@ -7,7 +7,7 @@
   --body-bg: var(--main-wrapper-bg);
   // --body-bg: #0c0c14;
 
-  --mask-bg: rgb(26, 78, 39);
+  --mask-bg: rgb(26, 49, 78);
   // --main-wrapper-bg: #080005f8;
   --main-wrapper-bg: radial-gradient(closest-side, #080005d3 40%, #030203 80%);
   --main-border-color: rgb(39, 0, 33);
@@ -21,9 +21,9 @@
   --heading-color: #cccccc;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
-  --link-color: rgb(0, 254, 63);
-  --link-underline-color: rgba(0, 254, 63, 0.715);
-  --button-bg: rgba(26, 255, 0, 0.368);
+  --link-color: rgba(17, 183, 212, 0.631);
+  --link-underline-color: rgba(17, 183, 212, 0.318);
+  --button-bg: rgba(17, 183, 212, 0.318);
   --btn-border-color: rgb(63, 65, 68);
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
@@ -49,7 +49,7 @@
   --topbar-text-color: var(--text-color);
   --topbar-wrapper-bg: radial-gradient(circle, #0ced1038 0%, #030203 100%);
   --search-wrapper-bg: rgba(27, 11, 23, 0.582);
-  --search-wrapper-border-color: rgb(82, 245, 0);
+  --search-wrapper-border-color: rgb(17, 183, 212);
   --search-icon-color: rgb(100, 102, 105);
   --input-focus-border-color: rgb(112, 114, 115);
 
@@ -62,20 +62,20 @@
   /* Home page */
   --post-list-text-color: rgb(175, 176, 177);
   --btn-patinator-text-color: var(--text-color);
-  --btn-paginator-hover-color: rgb(59, 68, 55);
+  --btn-paginator-hover-color: rgb(1, 78, 92);
   --btn-paginator-border-color: var(--btn-border-color);
   --btn-text-color: var(--text-color);
   --pin-bg: rgb(51, 31, 50);
   --pin-color: inherit;
 
   /* Posts */
-  --toc-highlight: rgb(136, 199, 153);
+  --toc-highlight: rgb(136, 162, 199);
   --tag-bg: rgb(41, 40, 40);
   --tag-hover: rgb(28, 46, 29);
   --tb-odd-bg: rgba(59, 59, 59, 0.52); /* odd rows of the posts' table */
   --tb-even-bg: rgb(41, 41, 41); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
-  --footnote-target-bg: rgb(63, 181, 77);
+  --footnote-target-bg: rgb(63, 146, 181);
   --btn-share-color: #6c7d72;
   --btn-share-hover-color: #bfcac6;
   --relate-post-date: var(--text-muted-color);

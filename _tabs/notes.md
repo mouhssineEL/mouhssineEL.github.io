@@ -18,11 +18,13 @@ order: 2
 | **Services** |
 | [SSH](/notes/system/ssh) | Attacking SSH |
 | [FTP](/notes/system/ftp) | Attacking FTP |
+| [RPC](/notes/system/rpc) | Attacking RPC |
 | [SMB](/notes/system/smb) | Attacking SMB |
 | [RDP](/notes/system/rdp) | Attacking RDP |
 | [SQL](/notes/system/sql) | Attacking SQL databases |
 | [DNS](/notes/system/dns) | Attacking DNS |
 | [SMTP](/notes/system/smtp) | Attacking SMTP |
+| [Redis](/notes/system/redis) | Attacking Redis |
 | **Linux** |
 | [Linux Privilege Escalation](/notes/system/linux-privilege-escalation) | PE for Linux |
 | **Windows** |

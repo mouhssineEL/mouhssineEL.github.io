@@ -592,7 +592,7 @@ If Windows Defender (or another AV/EDR) is enabled, any command in the shell may
 
 ## PrintNightmare
 
-  **PrintNightmare** is the nickname to two CVE ([2021.34527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527) and [2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)) found in the **Print Spooler service**. This allow RCE and PE. We will be using this [tool](https://github.com/cube0x0/CVE-2021-1675). We need the *cube0x0*'s version of Impacket:
+  **PrintNightmare** is the nickname to two CVE ([2021-34527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527) and [2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)) found in the **Print Spooler service**. This allow RCE and PE. We will be using this [tool](https://github.com/cube0x0/CVE-2021-1675). We need the *cube0x0*'s version of Impacket:
 ```console
 zero@pio$ git clone https://github.com/cube0x0/CVE-2021-1675.gi
 zero@pio$ pip3 uninstall impacket
