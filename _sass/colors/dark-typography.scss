@@ -9,8 +9,8 @@
 
   --mask-bg: rgb(26, 49, 78);
   // --main-wrapper-bg: #080005f8;
-  --main-wrapper-bg: radial-gradient(closest-side, #080005d3 40%, #030203 80%);
-  --main-border-color: rgb(39, 0, 33);
+  --main-wrapper-bg: radial-gradient(closest-side, #131313 1%, #131313 80%);
+  --main-border-color: #cccccc;
 
   // --mask-bg: rgb(68, 69, 70);
   // --main-wrapper-bg: rgb(27, 27, 30);
@@ -18,13 +18,13 @@
   /* Common color */
   --text-color: rgb(175, 176, 177);
   --text-muted-color: rgb(107, 116, 124);
-  --heading-color: #cccccc;
+  --heading-color: #11B7D4;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
-  --link-color: rgba(17, 183, 212, 0.631);
-  --link-underline-color: rgba(17, 183, 212, 0.318);
-  --button-bg: rgba(17, 183, 212, 0.318);
-  --btn-border-color: rgb(63, 65, 68);
+  --link-color: #11B7D4;
+  --link-underline-color: #11B7D4;
+  --button-bg: #11B7D400;
+  --btn-border-color: #11B7D4;
   --btn-backtotop-color: var(--text-color);
   --btn-backtotop-border-color: var(--btn-border-color);
   --btn-box-shadow: var(--main-wrapper-bg);
@@ -34,11 +34,11 @@
   --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, #00140038 0%, #030203 100%);
-  --sidebar-muted-color: #6d6c6b;
-  --sidebar-active-color: rgb(255 255 255 / 80%);
+  --sidebar-bg: radial-gradient(circle, #000 0%, #030203 100%);
+  --sidebar-muted-color: #11B7D4;
+  --sidebar-active-color: #11B7D4;
   --nav-cursor-color: rgb(183, 182, 182);
-  --sidebar-btn-bg: rgba(201, 0, 10, 0.823);
+  --sidebar-btn-bg: rgb(0 0 0 / 0%);
 
   // --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
   // --sidebar-muted-color: #6d6c6b;
