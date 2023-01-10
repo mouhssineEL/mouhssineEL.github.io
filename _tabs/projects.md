@@ -1,6 +1,6 @@
 ---
 title: Projects
-icon: fa fa-lightbulb-o
+icon: fa fa-lightbulbo
 order: 4
 ---
 
