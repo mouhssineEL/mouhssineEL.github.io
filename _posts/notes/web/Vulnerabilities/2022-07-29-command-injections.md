@@ -91,7 +91,7 @@ foreach ($blacklist as $character) {
 Most of the injection operators are indeed blacklisted. However, the new-line character is usually not blacklisted, as it may be needed in the payload itself. Once we have found a operator that can go through we can start our attack `...%0a whoami`.
 
 Probably, the space is also blacklisted. Even though, there are ways to bypassing it:
-- **Using Tabs **: using tabs (`%09`) instead of spaces is a technique that may work. The payload will be `...%0a%09whoami`.
+- **Using Tabs**: using tabs (`%09`) instead of spaces is a technique that may work. The payload will be `...%0a%09whoami`.
 - **Using $IFS** (Linux Environment Variable): if we use ${IFS} where the spaces should be, the variable should be automatically replaced with a space. The payload will be `...%0a${IFS}whoami`.
 - **Using Brace Expansion**: automatically adds spaces between arguments wrapped between braces, as follows: `{ls,-la}`. So the payload will be: `...%0a{ls,-la}`.
 
