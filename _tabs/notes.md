@@ -76,6 +76,14 @@ order: 2
 
 | **Link**   | **Description**    |
 |--------------- | --------------- |
+| **Development** |
+| [Portable Executable](/notes/malware/portable-executable) | PE files, structure and places for payload |
+| [Dropper](/notes/malware/dropper) | How to write droppers |
+| [Encoding and Encryption](/notes/malware/encoding-encryption) | Hide code with encoding and encryption methods |
+| [Obfuscation and Hiding](/notes/malware/obfuscation) | Hide code with obfuscation |
+| [Backdoors and Trojans](/notes/malware/backdoors-trojans) | How to backdoor existing software |
+| [Code Injection](/notes/malware/code-injection) | Inject payloads into EXE and DLL |
+| [Tips](/notes/malware/tips) | Useful tips for hiding |
 | **Analysis** |
 | [Safe Malware Handling and Sourcing](/notes/malware/safe-handling-sourcing) | Safe ways to handle with malware and some sources where you can get some samples |
 | [Types](/notes/malware/types) | Types of malware |
@@ -90,23 +98,20 @@ order: 2
 
 ---
 
-# Forensic 
+# Ctf-Like
 
 | **Link** | **Description**    |
 |--------------- | --------------- |
+| **Forensic**
 | [Files](/notes/forensic/files) | Files analysis |
 | [Linux Forensic](/notes/forensic/linux)  | Forensic for Linux   |
 | [Windows Forensic](/notes/forensic/windows)   | Forensic for Windows   |
 | [USB](/notes/forensic/usb) | Forensics for an USB |
-
----
-
-# Cryptography
-
-| **Link**   | **Description**    |
-|--------------- | --------------- |
+| **Cryptography** |
 | [Classical Ciphers](/notes/cryptography/classical-ciphers)  | Information about common ciphers   |
 | [Hash](/notes/cryptography/hash)  | Information about hashes   |
+| **Reversing** |
+| [Basic](/notes/reversing/basic) | Basic info about reversing |
 
 ---
 
