@@ -9,7 +9,7 @@ order: 2
 | **Link**   | **Description**    |
 |--------------- | --------------- |
 | **General**  |
-| [Enumaration](/notes/system/enumeration) | Enumeration techniques and tools |
+| [Enumeration](/notes/system/enumeration) | Enumeration techniques and tools |
 | [Network](/notes/system/network) | Network aid |
 | [Shell](/notes/system/shell) | Reverse shell and more |
 | [File Transfer](/notes/system/transfer-files) | Help for transfer files |
