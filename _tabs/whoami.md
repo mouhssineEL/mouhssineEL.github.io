@@ -1,39 +1,45 @@
 ---
 title: Whoami
-order: 5
+order: 4
 icon: fa fa-user
 ---
 
-# Hey 👋
-
 <div id="badges" align="center">
-      <a href="https://www.linkedin.com/in/emilio-s%C3%A1nchez-garc%C3%ADa/">
+      <a href="https://zeropio.github.io/">
+        <img src="https://img.shields.io/badge/Personal%20Web-black?style=for-the-badge&logo=television"
+          alt="Web Badge" />
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/emilio-s%C3%A1nchez-garc%C3%ADa/" target="_blank">
         <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white"
           alt="LinkedIn Badge" />
       </a>
-      <a href="https://github.com/zeropio">
-        <img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white"
-          alt="Github Badge" />
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://app.hackthebox.com/profile/380109" target="_blank">
+        <img src="https://img.shields.io/badge/HackTheBox-green?style=for-the-badge&logo=hackthebox&logoColor=black"
+          alt="HackTheBox Badge" />
       </a>
-      <a href="https://paypal.me/emiliosang">
-        <img src="https://img.shields.io/badge/PayPal-blue?style=for-the-badge&logo=paypal&logoColor=white"
-          alt="PayPal Badge" />
+      &nbsp;&nbsp;&nbsp;
+      <a href="mailto: zeropio@pm.me">
+        <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white"
+          alt="Protonmail Badge" />
       </a>
     </div>
 <br />
 <br />
 <br />
-  
-- 👉 Junior pentester, malware analyst;<br />
-- 💬 Ask me about anything, I am happy to learn;<br />
-- 📫 How to reach me: **<a href="mailto: zeropio@pm.me">zeropio@pm.me</a>**;
+
+<p align="center">
+    <img alt="My discord account: zeropio#2900" src="https://discord.c99.nl/widget/theme-1/398195882216128532.png">
+</p>
 
 <br>
+<hr>
+<br>
 
-[![DenverCoder1's github streak](https://github-readme-streak-stats.herokuapp.com/?user=zeropio&theme=blue-green)](https://github.com/DenverCoder1/github-readme-streak-stats)
+- 👉 CyberSec Student;<br />
+- 🪲 Malware passionate;<br />
+- ⚙️ Tool dev;<br />
+- 📂 Open Source enjoyer;<br />
+- 🐧 Average Linux user;
 
----
-
-# 👨‍💻 Languages and Tools:
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=zeropio&layout=compacto&theme=blue-green)](https://github.com/anuraghazra/github-readme-stats)
