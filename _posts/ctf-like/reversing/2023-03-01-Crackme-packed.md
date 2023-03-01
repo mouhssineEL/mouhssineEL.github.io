@@ -1,5 +1,5 @@
 ---
-title: MalDev | CrackMe Packed
+title: Reversing | CrackMe Packed
 author: Zeropio
 date: 2023-03-01
 categories: [CTFlike, Reversing]
