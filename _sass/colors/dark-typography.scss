@@ -16,13 +16,13 @@
   // --main-wrapper-bg: rgb(27, 27, 30);
   // --main-border-color: rgb(44, 45, 45);
   /* Common color */
-  --text-color: rgb(175, 176, 177);
+  --text-color: rgb(255, 255, 255);
   --text-muted-color: rgb(107, 116, 124);
   --heading-color: #11B7D4;
   --blockquote-border-color: rgb(66, 66, 66);
   --blockquote-text-color: rgb(117, 117, 117);
   --link-color: #11B7D4;
-  --link-underline-color: #11B7D4;
+  --link-underline-color: #11B7D475;
   --button-bg: #11B7D400;
   --btn-border-color: #11B7D4;
   --btn-backtotop-color: var(--text-color);
@@ -49,7 +49,7 @@
   --topbar-text-color: var(--text-color);
   --topbar-wrapper-bg: radial-gradient(circle, #0ced1038 0%, #030203 100%);
   --search-wrapper-bg: rgba(27, 11, 23, 0.582);
-  --search-wrapper-border-color: rgb(17, 183, 212);
+  --search-wrapper-border-color: rgb(255, 255, 255);
   --search-icon-color: rgb(100, 102, 105);
   --input-focus-border-color: rgb(112, 114, 115);
 

@@ -4,6 +4,10 @@
   type: github
   icon: 'fab fa-github'
 -
+  type: ctftime
+  icon: 'fas fa-flag'
+  url:  https://ctftime.org/team/212175
+-
   type: hackthebox
   icon: 'fas fa-cube'
   url: 'https://app.hackthebox.com/profile/380109'
