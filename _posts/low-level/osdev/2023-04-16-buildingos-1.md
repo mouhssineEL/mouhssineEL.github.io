@@ -21,16 +21,14 @@ This type of executable is called *freestanding* or *bare-metal*.
 
 # The Standard Library
 
-Firstly, we must disable the **Standard Library** (`std`). As described by the Rust Foundation:
-
-> The Rust Standard Library is the foundation of portable Rust software, providing a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
+Firstly, we must disable the **Standard Library** (`std`)[^footnote]. As described by the Rust Foundation:
 
 To initiate a Rust project, we can create the basic structure using the following command:
 ```shell
 cargo new zeros
 ```
 
-To disable `std`, we must edit `main.rs` and add the `no_std` attribute:"
+To disable `std`, we must edit `main.rs`{: .filepath} and add the `no_std` attribute:
 ```rust
 #![no_std]
 
@@ -80,7 +78,7 @@ fn panic(_info: &PanicInfo) -> ! {
 
 # The eh_personality
 
-Rust uses [unwinding](/lowlevel/buildingos/chapter-0#stack-unwinding) of all stack variables in case of *panic*. However, unwinding requires some OS-specific libraries (such as *libunwind*) that we don't currently have. To disable it in `Cargo.toml`, we can make the following change, which will cause the program to abort in case of a panic:
+Rust uses [unwinding](/lowlevel/buildingos/chapter-0#stack-unwinding) of all stack variables in case of *panic*. However, unwinding requires some OS-specific libraries (such as *libunwind*) that we don't currently have. To disable it in `Cargo.toml`{: .filepath}, we can make the following change, which will cause the program to abort in case of a panic:
 ```rust
 [profile.dev]
 panic = "abort"
@@ -102,8 +100,7 @@ error: requires `start` lang_item
 ```
 {: file='Error'}
 
-Before the `main` function is executed, there is a `start` function that works with the *runtime system*. According to Wikipedia, a runtime system is:
-> In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run.
+Before the `main` function is executed, there is a `start` function that works with the *runtime system*[^fn-nth-2]. According to Wikipedia, a runtime system is:
 
 In a typical Rust binary, execution starts in a C runtime library called `crt0` (*C runtime zero*). The entry point of the Rust runtime is then called from this runtime and is marked as `start`. To overwrite this entry point, we must create our own `_start` function, since we don't have a `main` function:
 ```rust
@@ -144,3 +141,12 @@ The next step is to specify that we don't want to build for a target OS, but ins
 
 - [Freestanding Rust Binary](https://os.phil-opp.com/freestanding-rust-binary/)
 - [Crate std](https://doc.rust-lang.org/std/index.html)
+
+<br>
+
+---
+
+# Footnotes
+
+[^footnote]: The Rust Standard Library is the foundation of portable Rust software, providing a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
+[^fn-nth-2]: In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run.

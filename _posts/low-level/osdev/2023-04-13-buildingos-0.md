@@ -1,11 +1,9 @@
 ---
 title: OSDev | Chapter 0 | Basic Kernel
-author: x4sh3s
+author: Zeropio
 date: 2023-04-13
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
-comments: true
-toc: true
 permalink: /lowlevel/osdev/chapter-0
 ---
 
@@ -68,7 +66,7 @@ _Simple boot_
 
 ## Printing
 
-We can use the ********BIOS******** (**B**asic **I**nput/**O**utput **S**ystem) to perform some functions, like printing characters on screen. To print a char in NASM we need to build the following:
+We can use the **BIOS** (**B**asic **I**nput/**O**utput **S**ystem) to perform some functions, like printing characters on screen. To print a char in NASM we need to build the following:
 
 ```nasm
 mov ah, 0x0e ; set ah

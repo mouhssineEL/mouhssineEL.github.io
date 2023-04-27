@@ -58,7 +58,7 @@ We change the `os` and `llvm-target` to `none`. We also change the linker from t
 
 If we try to compile the kernel, it will crash because it can't find the `core` library. This library is precompiled for each target Rust has, but since we are using our own target, we don't have it yet.
 
-To fix this, we need to use `build-std` in our `.cargo/config.toml` file. Add this line:
+To fix this, we need to use `build-std` in our `.cargo/config.toml`{: .filepath} file. Add this line:
 ```toml
 [unstable]
 build-std = ["core", "compiler_builtins"]
@@ -83,7 +83,7 @@ rustup component add rust-src
 
 ## C Functions
 
-In the future, we will need some C functions such as `memset`, `memcmp`, etc. Since these are from C and we don't have them in the system, we can either build our own functions (which could lead to errors) or enable the compilation of the C library to the system. Before the `build-std` section in `.cargo/config.toml`, add:
+In the future, we will need some C functions such as `memset`, `memcmp`, etc. Since these are from C and we don't have them in the system, we can either build our own functions (which could lead to errors) or enable the compilation of the C library to the system. Before the `build-std` section in `.cargo/config.toml`{: .filepath}, add:
 ```toml
 build-std-features = ["compiler-builtins-mem"]
 ```
@@ -91,7 +91,7 @@ build-std-features = ["compiler-builtins-mem"]
 
 ## Default Target
 
-To avoid specifying the kernel target each time we compile, we can set the default target in `.cargo/config.toml`:
+To avoid specifying the kernel target each time we compile, we can set the default target in `.cargo/config.toml`{: .filepath}:
 ```toml
 [build]
 target = "x86_64-zeros.json"
@@ -150,7 +150,7 @@ pub extern "C" fn _start() -> ! {
 
 # Running the Kernel
 
-First, we need to add the `bootimage` dependency to `Cargo.toml`:
+First, we need to add the `bootimage` dependency to `Cargo.toml`{: .filepath}:
 ```toml
 [dependencies]
 bootloader = "0.9.23"
@@ -190,7 +190,7 @@ With this, we have achieved the same functionality as in Chapter 0, but using Ru
 
 We'll be using Rust's [Macros](https://veykril.github.io/tlborm/) functionality to create a more stable method for printing to VGA. To print to the VGA buffer, we must write to it in a specific format:
 
-| **Bits** | **Value** | 
+| **Bits** | **Value** |
 | -------- | --------- |
 | 0 - 7 | ASCII |
 | 8 - 11 | Foreground color |
@@ -210,7 +210,7 @@ We'll be using Rust's [Macros](https://veykril.github.io/tlborm/) functionality 
 
 The VGA buffer is a memory-mapped I/O located at address `0xb8000`. While the text buffer supports normal reads and writes, some memory-mapped I/O does not support all RAM operations. Therefore, we need to implement a writer that only writes to the buffer. It's important to note that the compiler doesn't differentiate between the VGA buffer memory and normal RAM, so it may not recognize the characters we're attempting to print, resulting in errors.
 
-To address this issue, we'll add the macro to `vga_buffer.rs`.
+To address this issue, we'll add the macro to `vga_buffer.rs`{: .filepath}.
 
 ## Colors
 
@@ -238,7 +238,7 @@ pub enum Color {
     White = 15,
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 To represent colors, we'll create a struct that sets both foreground and background colors, and we'll use the *derive* macro to include the `Debug`, `Clone`, `Copy`, `PartialEq`, and `Eq` traits. We'll also use the `repr(transparent)` attribute to ensure the struct has the same data layout as `u8`:
 ```rust
@@ -252,7 +252,7 @@ impl ColorCode {
     }
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 ## Text and Volatile
 
@@ -261,7 +261,7 @@ The issue with the code is that it only writes to `Buffer` and never reads from 
 [dependencies]
 volatile = "0.2.6"
 ```
-{: .file='Cargo.toml'}
+{: file='Cargo.toml'}
 
 To represent a character on the screen, we need to use `repr(C)` to implement a C struct and guarantee the field ordering. For the `Buffer`, we'll use `repr(transparent)` again:
 ```rust
@@ -280,7 +280,7 @@ struct Buffer {
     chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 To write on the screen, we'll create a type. We'll need to use a *lifetime* to indicate to the compiler how long the reference is valid. In this case, `'static` specifies that the reference is valid for the entire runtime:
 ```rust
@@ -290,7 +290,7 @@ pub struct Writer {
     buffer: &'static mut Buffer,
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 ## Printing
 
@@ -381,7 +381,7 @@ Statics are initialized at compile time, unlike other variables. To initialize s
 version = "1.0"
 features = ["spin_no_std"]
 ```
-{: .file='Cargo.toml'}
+{: file='Cargo.toml'}
 
 Now we can use `lazy_static!` to define the static `WRITER`. Since all the write methods take `&mut self`, we can't write anything to it. If we use a mutable static, it will be unsafe code because it could easily introduce data races. To get a *synchronized* interior mutability, we can use the [Mutex](https://doc.rust-lang.org/nightly/std/sync/struct.Mutex.html) struct.
 
@@ -390,7 +390,7 @@ We can use a *spinlock*[^fn-nth-4] to create a loop instead of blocking the thre
 [dependencies]
 spin = "0.5.2"
 ```
-{: .file='Cargo.toml'}
+{: file='Cargo.toml'}
 
 Now we can create the *unsafe* function to print with interior mutability:
 ```rust
@@ -404,7 +404,7 @@ lazy_static! {
     });
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 For easier access, we can create the `println` macro. This function has two rules: printing without parameters (simple `println()`) and printing with parameters (`println("Hi")` or `println("{}", 4)`). For this, we can copy the `println!` function from Rust:
 ```rust
@@ -414,7 +414,7 @@ macro_rules! println {
     ($($arg:tt)*) => ($crate::print!("{}\n", format_args!($($arg)*)));
 }
 ```
-{: .file='src/vga_buffer.rs'}
+{: file='src/vga_buffer.rs'}
 
 We are now able to use the `println` macro to print messages to the screen.
 ```rust
@@ -425,7 +425,15 @@ pub extern "C" fn _start() {
     loop {}
 }
 ```
-{: .file='src/main.rs'}
+{: file='src/main.rs'}
+
+To allow the usage on any file in the project we need to create a `src/lib.rs`{: .filepath} with the following contents:
+```rust
+#![no_std]
+
+pub mod vga_buffer;
+```
+{: file='src/lib.rs'}
 
 <br>
 
@@ -454,7 +462,7 @@ _Running Kernel_
 
 ---
 
-# Footnote
+# Footnotes
 
 [^footnote]: **Stack unwinding** is the process of *unrolling* the call stack in a computer program when an exception or error occurs. This involves reversing the sequence of function calls that led to the error, deallocating resources that were allocated during those calls, and returning control to the point where the error occurred. The purpose of stack unwinding is to ensure that the program exits gracefully and that all resources are properly cleaned up, even in the event of an unexpected error.
 [^fn-nth-2]: The **Red Zone** is an optimization that allow functions the use of the 128 bytes below their stack frame. This optimization leads to problems with exceptions and hardware interrupts. If a function is stopped while using the red zone, and the CPU overwrite it, the function still need the previous values from it. This leads to strange and hard-to-find bugs.
