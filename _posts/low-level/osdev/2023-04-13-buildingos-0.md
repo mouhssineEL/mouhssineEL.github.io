@@ -5,6 +5,8 @@ date: 2023-04-13
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
 permalink: /lowlevel/osdev/chapter-0
+image:
+  path: /assets/img/osdev/Untitled.png
 ---
 
 # Introduction
