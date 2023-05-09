@@ -1,6 +1,6 @@
 ---
 title: OSDev | Chapter 0 | Basic Kernel
-author: Zeropio
+author: x4sh3s
 date: 2023-04-13
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
@@ -9,7 +9,7 @@ image:
   path: /assets/img/osdev/Untitled.png
 ---
 
-# Introduction
+## Introduction
 
 This series, is a personal project focused on learning more about ASM, kernel development, computer basics, and Rust. This is not a professional blog, and I will be using resources from various sites. Some of the posts may be scripts, while others will not. I will always include a **Resources** section with all the sites I consulted. Please feel free to point out any errors.
 
@@ -23,7 +23,7 @@ Enjoy!
 
 ---
 
-# Booting
+## Booting
 
 When a computer starts up, the first thing it does is look for an operating system. This OS is located in a section of the memory called the **boot sector**, which is the first sector of a bootable drive. It is recognizable as it is 512 bytes long and ends with `55 AA`.
 
@@ -64,9 +64,9 @@ _Simple boot_
 
 ---
 
-# Strings
+## Strings
 
-## Printing
+### Printing
 
 We can use the **BIOS** (**B**asic **I**nput/**O**utput **S**ystem) to perform some functions, like printing characters on screen. To print a char in NASM we need to build the following:
 
@@ -124,7 +124,7 @@ Now we can print anything!
 ![Untitled](/assets/img/osdev/Untitled%201.png)
 _String Print_
 
-## Input
+### Input
 
 Now we need to input some data, instead of just printing. We have the BIOS interreput `0x16` with `ah = 0`. Here, we have implemented a buffer that allocates a string of 10 bytes:
 
@@ -145,7 +145,7 @@ mov al, [char]
 
 ---
 
-# Reading Disk
+## Reading Disk
 
 All BIOS count with functions to read from it. HHD disk has **C**ylinders where the data is stored, and two **H**ead for each - one for read and one for write. Also, each platter is divided into **S**ectors, with each sector being divided into 512 bytes (like the boot sector).
 
@@ -249,11 +249,11 @@ times 512 db 'A'
 
 ---
 
-# Protected Mode
+## Protected Mode
 
 **Protected Mode** is a 32 bits operational mode. First, we need to start segmentation in **PM**. For this we will not use registers, but the **GDT** (**G**lobal **D**escriptor **T**able).
 
-## Descriptors
+### Descriptors
 
 We need to find a **Descriptors** (a list of properties of a segment) for each segment we are going to use in PM. There are several memory models and technique, as:
 
@@ -263,7 +263,7 @@ We need to find a **Descriptors** (a list of properties of a segment) for each s
 
 GDT must contain a **code segment Descriptor** and **data segment Descriptor**.
 
-### Code Segment Descriptor
+#### Code Segment Descriptor
 
 First, we need to define the size of the segment and the location. The **base** property of the segment describes the starting location, and **limit** describes the size.
 
@@ -293,7 +293,7 @@ So the end view will be:
 | Type flags | 1010 |
 | Other flags | 1100 |
 
-### Data Segment Descriptor
+#### Data Segment Descriptor
 
 We should change the following:
 
@@ -308,7 +308,7 @@ So the end view will be:
 | Type flags | 0010 |
 | Other flags | 1100 |
 
-## Define GDT in ASM
+### Define GDT in ASM
 
 We need to define:
 
@@ -389,7 +389,7 @@ mov [0xb8000], ax
 
 ---
 
-# Final Code
+## Final Code
 
 ```nasm
 [org 0x7c00]
@@ -453,7 +453,7 @@ _Final Version_
 
 ---
 
-# References
+## References
 
 - [Making an OS (x86)](https://www.youtube.com/playlist?list=PLm3B56ql_akNcvH8vvJRYOc7TbYhRs19M)
 - [Wiki OSDev](https://wiki.osdev.org/Main_Page)

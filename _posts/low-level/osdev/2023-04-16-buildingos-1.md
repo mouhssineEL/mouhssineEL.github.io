@@ -1,13 +1,13 @@
 ---
 title: OSDev | Chapter 1 | Freestanding Rust
-author: Zeropio
+author: x4sh3s
 date: 2023-04-16
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
 permalink: /lowlevel/osdev/chapter-1
 ---
 
-# Introduction
+## Introduction
 
 The kernel will be written in Rust, which is why we need to do some preparations before starting to code. This will not be the beginning of development, but rather the setup phase. The kernel must be in a file without any links or syscalls. In the previous chapter, programming simple ASM code did not link to any library, but Rust programming (or any language) will do so automatically.
 
@@ -19,7 +19,7 @@ This type of executable is called *freestanding* or *bare-metal*.
 
 ---
 
-# The Standard Library
+## The Standard Library
 
 Firstly, we must disable the **Standard Library** (`std`)[^footnote]. As described by the Rust Foundation:
 
@@ -42,7 +42,7 @@ fn main() {
 
 ---
 
-# The Panic Handler
+## The Panic Handler
 
 But we have run into an error:
 ```
@@ -76,7 +76,7 @@ fn panic(_info: &PanicInfo) -> ! {
 
 ---
 
-# The eh_personality
+## The eh_personality
 
 Rust uses [unwinding](/lowlevel/buildingos/chapter-0#stack-unwinding) of all stack variables in case of *panic*. However, unwinding requires some OS-specific libraries (such as *libunwind*) that we don't currently have. To disable it in `Cargo.toml`{: .filepath}, we can make the following change, which will cause the program to abort in case of a panic:
 ```rust
@@ -92,7 +92,7 @@ panic = "abort"
 
 ---
 
-# The start function
+## The start function
 
 The program encountered a new error:
 ```
@@ -118,7 +118,7 @@ The use of `no_mangle` disables *name mangling*, which ensures that Rust doesn't
 
 ---
 
-# Linker Error
+## Linker Error
 
 The following error appears:
 ```
@@ -137,7 +137,7 @@ The next step is to specify that we don't want to build for a target OS, but ins
 
 ---
 
-# References
+## References
 
 - [Freestanding Rust Binary](https://os.phil-opp.com/freestanding-rust-binary/)
 - [Crate std](https://doc.rust-lang.org/std/index.html)
@@ -146,7 +146,7 @@ The next step is to specify that we don't want to build for a target OS, but ins
 
 ---
 
-# Footnotes
+## Footnotes
 
 [^footnote]: The Rust Standard Library is the foundation of portable Rust software, providing a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.
 [^fn-nth-2]: In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run.

@@ -1,13 +1,13 @@
 ---
 title: OSDev | Chapter 2 | Rust Kernel
-author: Zeropio
+author: x4sh3s
 date: 2023-04-17
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
 permalink: /lowlevel/osdev/chapter-2
 ---
 
-# Introduction
+## Introduction
 
 Now that we have a freestanding Rust binary, the next step is to create the kernel. We will create a 64-bit kernel for the x86 architecture. As we saw in the first chapter, we will begin by developing a bootable file.
 
@@ -15,7 +15,7 @@ Now that we have a freestanding Rust binary, the next step is to create the kern
 
 ---
 
-# The Boot
+## The Boot
 
 As explained in [Chapter 0](/lowlevel/buildingos/chapter-0#booting), almost all modern machines have a BIOS. When a computer is started, the BIOS runs by itself and initializes all the hardware. It then looks for disks and searches for a bootable section. This *bootloader* must be a 512-byte section. Additionally, we need to switch from 16-bit *real mode* to 32-bit *protected mode* (as we did in [Chapter 0](/lowlevel/buildingos/chapter-0#protected-mode)) and then to 64-bit *long mode*.
 
@@ -25,7 +25,7 @@ Instead of crafting the bootloader in ASM as we did before, we will use the [boo
 
 ---
 
-# Creating the Architecture
+## Creating the Architecture
 
 As we have seen, by default, Rust compiles to a target OS and architecture. To write a kernel, we must specify that we don't want to compile to an OS, but rather be the OS itself. During compile time, we can use the `--target` flag to select this or we can build our own JSON file:
 ```json
@@ -53,7 +53,7 @@ We change the `os` and `llvm-target` to `none`. We also change the linker from t
 
 ---
 
-# Compiling the Kernel
+## Compiling the Kernel
 
 
 If we try to compile the kernel, it will crash because it can't find the `core` library. This library is precompiled for each target Rust has, but since we are using our own target, we don't have it yet.
@@ -81,7 +81,7 @@ And install:
 rustup component add rust-src
 ```
 
-## C Functions
+### C Functions
 
 In the future, we will need some C functions such as `memset`, `memcmp`, etc. Since these are from C and we don't have them in the system, we can either build our own functions (which could lead to errors) or enable the compilation of the C library to the system. Before the `build-std` section in `.cargo/config.toml`{: .filepath}, add:
 ```toml
@@ -89,7 +89,7 @@ build-std-features = ["compiler-builtins-mem"]
 ```
 {: file='.cargo/config.toml'}
 
-## Default Target
+### Default Target
 
 To avoid specifying the kernel target each time we compile, we can set the default target in `.cargo/config.toml`{: .filepath}:
 ```toml
@@ -102,7 +102,7 @@ target = "x86_64-zeros.json"
 
 ---
 
-# Printing some String
+## Printing some String
 
 To output some text in the system, for a health check, we can print a string on the *VGA text buffer*[^fn-nth-3]. For this, we need to:
 
@@ -148,7 +148,7 @@ pub extern "C" fn _start() -> ! {
 
 ---
 
-# Running the Kernel
+## Running the Kernel
 
 First, we need to add the `bootimage` dependency to `Cargo.toml`{: .filepath}:
 ```toml
@@ -186,7 +186,7 @@ With this, we have achieved the same functionality as in Chapter 0, but using Ru
 
 ---
 
-# More Text
+## More Text
 
 We'll be using Rust's [Macros](https://veykril.github.io/tlborm/) functionality to create a more stable method for printing to VGA. To print to the VGA buffer, we must write to it in a specific format:
 
@@ -212,7 +212,7 @@ The VGA buffer is a memory-mapped I/O located at address `0xb8000`. While the te
 
 To address this issue, we'll add the macro to `vga_buffer.rs`{: .filepath}.
 
-## Colors
+### Colors
 
 First, we'll create an enum that includes all the colors. We'll use a *C-like enum* to add a `u8` value. The `#[allow(dead_code)]` attribute disables warnings for unused variants:
 ```rust
@@ -254,7 +254,7 @@ impl ColorCode {
 ```
 {: file='src/vga_buffer.rs'}
 
-## Text and Volatile
+### Text and Volatile
 
 The issue with the code is that it only writes to `Buffer` and never reads from it again. Since the compiler doesn't know which characters are being printed, some may be omitted. To prevent these errors, we'll use the [volatile](https://docs.rs/volatile/latest/volatile/) crate. This creates a `Volatile` wrapper with `read` and `write` methods. First, we'll need to add the dependency:
 ```rust
@@ -292,7 +292,7 @@ pub struct Writer {
 ```
 {: file='src/vga_buffer.rs'}
 
-## Printing
+### Printing
 
 We'll implement some functions to `Writer` to enable writing:
 
@@ -359,7 +359,7 @@ fn clear_row(&mut self, row: usize) {
 }
 ```
 
-## Macros
+### Macros
 
 We can implement the `Write` method from `fmt`:
 ```rust
@@ -373,7 +373,7 @@ impl fmt::Write for Writer {
 }
 ```
 
-## println Macro
+### println Macro
 
 Statics are initialized at compile time, unlike other variables. To initialize statics at runtime, we need to use the [lazy_statics](https://crates.io/crates/lazy_static) crate. First, add it. The `spin_no_std` crate allows us not to link to `std`:
 ```toml
@@ -439,7 +439,7 @@ pub mod vga_buffer;
 
 ---
 
-# Final Result
+## Final Result
 
 Our Kernel is now operational and printing output to the screen:
 
@@ -450,7 +450,7 @@ _Running Kernel_
 
 ---
 
-# References
+## References
 
 - [A Minimal Rust Kernel](https://os.phil-opp.com/minimal-rust-kernel/)
 - [Unsafe Rust](https://doc.rust-lang.org/stable/book/ch19-01-unsafe-rust.html)
@@ -462,7 +462,7 @@ _Running Kernel_
 
 ---
 
-# Footnotes
+## Footnotes
 
 [^footnote]: **Stack unwinding** is the process of *unrolling* the call stack in a computer program when an exception or error occurs. This involves reversing the sequence of function calls that led to the error, deallocating resources that were allocated during those calls, and returning control to the point where the error occurred. The purpose of stack unwinding is to ensure that the program exits gracefully and that all resources are properly cleaned up, even in the event of an unexpected error.
 [^fn-nth-2]: The **Red Zone** is an optimization that allow functions the use of the 128 bytes below their stack frame. This optimization leads to problems with exceptions and hardware interrupts. If a function is stopped while using the red zone, and the CPU overwrite it, the function still need the previous values from it. This leads to strange and hard-to-find bugs.

@@ -1,13 +1,13 @@
 ---
 title: OSDev | Chapter 4 | Memory Management
-author: Zeropio
+author: x4sh3s
 date: 2023-04-27
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
 permalink: /lowlevel/osdev/chapter-4
 ---
 
-# Introduction
+## Introduction
 
 In this part, we will implement two key memory management features: paging, which enables mapping physical memory to virtual memory, and heap allocation, which provides dynamic memory allocation for processes.
 
@@ -15,7 +15,7 @@ In this part, we will implement two key memory management features: paging, whic
 
 ---
 
-# Paging
+## Paging
 
 Memory access for each program should be independent from others. One process should not be able to access the memory of another process. **Segmentation** and **paging** allow us to achieve this.
 
@@ -75,9 +75,9 @@ The kernel we have written already works on 4-level paging due to being in 64-bi
 
 ---
 
-# Implementation
+## Implementation
 
-## Page Fault
+### Page Fault
 We can create a **page fault** by accessing a non-existent region. First, edit `src/interrupts.rs`{: .filepath}:
 ```rust
 lazy_static! {
@@ -118,7 +118,7 @@ The problem with the page tables is that they are stored in physical memory, and
 - **Temporary Mapping**: we can map the page table frames only when we need it.
 - **Recursive Page Tables**: instead of creating new tables, we can map the level 4 page table to the level 4 table itself.
 
-## Return to the Bootloader
+### Return to the Bootloader
 
 We will need to use the previously used **bootloader** crate, with the `map_physical_memory` feature:
 ```toml
@@ -141,7 +141,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 ```
 {: file='src/main.rs'}
 
-## Page Tables
+### Page Tables
 
 Now we can implement the page tables. Import a new module and create a new `src/memory.rs`{: .filepath}:
 ```rust
@@ -221,7 +221,7 @@ for (i, entry) in l4_table.iter().enumerate() {
 ```
 {: file='src/main.rs'}
 
-## Translating
+### Translating
 
 We can create a function to translate physical addresses to virtual memory addresses with the `x86_64` crate's `OffsetPageTable` function:
 ```rust
@@ -234,7 +234,7 @@ pub unsafe fn init(physical_memory_offset: VirtAddr) -> OffsetPageTable<'static>
 ```
 {: file='src/memory.rs'}
 
-## New Mapping
+### New Mapping
 Instead of reading page tables, we are going to create new mappings. First, we need to create a frame allocator. We can do it with the `bootloader` crate. We made an iterator of usable frames before:
 ```rust
 use x86_64::{
@@ -294,7 +294,7 @@ unsafe impl FrameAllocator<Size4KiB> for BootInfoFrameAllocator {
 
 ---
 
-# Heap Allocation
+## Heap Allocation
 
 There are two types of variables: **local** variables and **static** variables. Local variables are stored on the *call stack*[^footnote] and are only valid until the surrounding function returns.
 
@@ -304,7 +304,7 @@ Both local and static variables have a fixed size. Because of this downside, pro
 
 Using the heap in the kernel is necessary when we need to start using structs like `Vec` or `String` that grow in size.
 
-## The Allocator
+### The Allocator
 First, we need to create the heap allocator with the built-in `alloc` crate. To add it to the default compiler:
 ```rust
 extern crate alloc;
@@ -359,7 +359,7 @@ fn alloc_error_handler(layout: alloc::alloc::Layout) -> ! {
 ```
 {: file='src/lib.rs'}
 
-## The Kernel Heap
+### The Kernel Heap
 
 Before creating an allocator, we need to reserve a space in memory for the heap. We can use the previous functions we created for memory mapping to do this. Let's give it a starting address:
 ```rust
@@ -432,7 +432,7 @@ Finally, we need to call the function in `kernel_main`:
 ```
 {: file='src/main.rs'}
 
-## Allocator Crate
+### Allocator Crate
 
 We are going to use the [linked_list_allocator](https://crates.io/crates/linked_list_allocator) crate for our allocator. To add it, we include it as a dependency:
 ```toml
@@ -467,7 +467,7 @@ pub fn init_heap(
 ```
 {: file='src/allocator.rs'}
 
-## Testing
+### Testing
 
 We can go back to `kernel_main` and test it as follows:
 ```rust
@@ -517,7 +517,7 @@ _Heap Allocation_
 
 ---
 
-# References
+## References
 
 - Images done on [Figma](https://www.figma.com/)
 - [Introduction to Paging](https://os.phil-opp.com/paging-introduction/)
@@ -531,6 +531,6 @@ _Heap Allocation_
 
 ---
 
-# Footnotes
+## Footnotes
 
 [^footnote]: is a stack data structure that stores information about the active subroutines of a computer program.

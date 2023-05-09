@@ -1,13 +1,13 @@
 ---
 title: OSDev | Chapter 3 | Interrupts
-author: Zeropio
+author: x4sh3s
 date: 2023-04-26
 categories: [LowLevel, OSDev]
 tags: [lowlevel, osdev]
 permalink: /lowlevel/osdev/chapter-3
 ---
 
-# Introduction
+## Introduction
 
 To create a functional OS, it is essential to handle errors such as division by zero, attempts to access non-existent memory addresses, and other potential issues. One approach to handling errors is to create an *interrupt descriptor table*[^footnote]. Additionally, using different structs can also provide a better understanding of the system's overall structure and organization.
 
@@ -15,7 +15,7 @@ To create a functional OS, it is essential to handle errors such as division by 
 
 ---
 
-# CPU Exceptions
+## CPU Exceptions
 
 Exceptions occur when an error happens, causing the CPU to stop its current work and call an exception handler function. Some types of exceptions are:
 
@@ -69,7 +69,7 @@ When a exception is called, the following occurs on the CPU:
 5. The **GDT** is loaded into the *code segment*.
 6. The specified handler function is then executed.
 
-## IDT Structure
+### IDT Structure
 
 Rust already provides an [IDT](https://docs.rs/x86_64/0.14.2/x86_64/structures/idt/struct.InterruptDescriptorTable.html) that we can use:
 ```rust
@@ -132,7 +132,7 @@ extern "x86-interrupt" fn breakpoint_handler(stack_frame: InterruptStackFrame)
 
 This will drop an error, so we need to add `#![feature(abi_x86_interrupt)]` to `lib.rs`{: .filepath} to handle it.
 
-## Loading the IDT
+### Loading the IDT
 
 We can load the IDT as follows:
 ```rust
@@ -189,7 +189,7 @@ pub extern "C" fn _start() -> ! {
 ```
 {: file='src/main.rs'}
 
-## Error Visualizer
+### Error Visualizer
 
 Finally, we can see the error on screen:
 
@@ -200,7 +200,7 @@ _Exception Handled_
 
 ---
 
-# Double Faults
+## Double Faults
 
 To avoid triple faults (which restart the system), we need to handle double faults. As mentioned before, a double fault occurs when the CPU fails to invoke an exception handler. We can easily provoke this error with the following code:
 ```rust
@@ -214,7 +214,7 @@ unsafe {
 
 This will cause the kernel to crash.
 
-## The Handler
+### The Handler
 
 To handle double faults, we need to add some lines to `interrupts.rs`{: .filepath}. We need to add a new entry to the IDT and define a new function for it:
 ```rust
@@ -233,7 +233,7 @@ extern "x86-interrupt" fn double_fault_handler(stack_frame: InterruptStackFrame,
 ```
 {: file='src/interrupts.rs'}
 
-## Kernel Stack Overflow and Switching Stacks
+### Kernel Stack Overflow and Switching Stacks
 
 We can easily create a stack overflow by creating an infinite loop:
 ```rust
@@ -346,7 +346,7 @@ _Double Fault Handled_
 
 ---
 
-# Hardware Interrupts
+## Hardware Interrupts
 
 Hardware interrupts allow us to notify the CPU about some attached hardware. Instead of checking if the keyboard is pressed every time we press it, an instruction will be sent to the kernel. First, we need to create an **Interrupt Controller**, because we can't attach an unlimited amount of hardware to the CPU.
 
@@ -385,7 +385,7 @@ However, executing it will drop an error. This happens because interrupts are en
 ![](/assets/img/osdev/2023-04-26_19-47.png)
 _Double Fault Error_
 
-## Handling Time Interrupts
+### Handling Time Interrupts
 
 We create a C-like enum for the interrupt:
 ```rust
@@ -438,7 +438,7 @@ This will print the text an unlimited times.
 _Printing_
 
 
-## Deadlocks
+### Deadlocks
 
 Deadlocks occurs if a thread tries to lock a process. The print we used provokes one, not allowing the rest of the kernel to execute. To avoid this error we can modify the function `print` from `vga_buffer.rs`{: .filepath}:
 ```rust
@@ -454,7 +454,7 @@ pub fn _print(args: fmt::Arguments) {
 ```
 {: file='src/vga_buffer.rs'}
 
-## htl Instruction
+### htl Instruction
 
 We have used a `loop{}` at the end of the `_start` function to make it run, but this is a poorly efficient way of doing it. This makes the CPU works at full speed even though there is no work to do. We need to *halt* the CPU until the next interrupts, so the CPU enters in a sleep mode until then.
 
@@ -470,7 +470,7 @@ pub fn hlt_loop() -> ! {
 
 And now replace the `loop{}` with `zeros::hlt_loop()`.
 
-## Keyboard Input
+### Keyboard Input
 
 With everything set, we can now add keyboard input. We need to handle a new interrupt this time:
 ```rust
@@ -571,7 +571,7 @@ _Writing Input!_
 
 ---
 
-# References
+## References
 
 - [CPU Exceptions](https://os.phil-opp.com/cpu-exceptions/)
 - [Interrupt Descriptor Table](https://en.wikipedia.org/wiki/Interrupt_descriptor_table)
@@ -587,7 +587,7 @@ _Writing Input!_
 
 ---
 
-# Footnotes
+## Footnotes
 
 [^footnote]: is a data structure used by the x86 architecture to implement an *interrupt vector table*. which links a list of interrupt handlers with a list of interrupt requests.
 [^fn-nth-2]: the CPL instruction complements the value of the specified destination operand and stores the result back in the destination operand. Bits that previously contained a 1 will be changed to a 0 and bits that previously contained a 0 will be changed to a 1.
