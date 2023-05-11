@@ -4,9 +4,9 @@
 
 @mixin dark-scheme {
   /* Framework color */
-  --main-bg: rgb(27, 27, 30);
+  --main-bg: #232323  ;
   --mask-bg: rgb(68, 69, 70);
-  --main-border-color: rgb(44, 45, 45);
+  --main-border-color: rgb(255, 255, 255);
 
   /* Common color */
   --text-color: rgb(175, 176, 177);
@@ -34,7 +34,7 @@
   );
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+  --sidebar-bg: radial-gradient(circle, #1f1f1f 0%, #141414 100%);
   --sidebar-muted-color: #11B7D4;
   --sidebar-active-color: #11B7D4;
   --nav-cursor-color: rgb(183, 182, 182);
@@ -42,7 +42,7 @@
 
   /* Topbar */
   --topbar-text-color: var(--text-color);
-  --topbar-wrapper-bg: rgb(39, 40, 43);
+  --topbar-wrapper-bg: #141414;
   --search-wrapper-bg: rgb(34, 34, 39);
   --search-wrapper-border-color: rgb(34, 34, 39);
   --search-icon-color: rgb(100, 102, 105);
@@ -58,10 +58,10 @@
   --pin-color: inherit;
 
   /* Posts */
-  --toc-highlight: rgb(116, 178, 243);
+  --toc-highlight: #11B7D4;
   --tag-bg: rgb(41, 40, 40);
   --tag-hover: rgb(43, 56, 62);
-  --tb-odd-bg: rgba(42, 47, 53, 0.52); /* odd rows of the posts' table */
+  --tb-odd-bg: #343434; /* odd rows of the posts' table */
   --tb-even-bg: rgb(31, 31, 34); /* even rows of the posts' table */
   --tb-border-color: var(--tb-odd-bg);
   --footnote-target-bg: rgb(63, 81, 181);
