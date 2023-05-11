@@ -135,7 +135,7 @@ Disassembly of section .text:
 ```
 
 Now take your sysadmins skills to shine, or as I did copy it from [cocomelonc](https://cocomelonc.github.io/tutorial/2021/10/09/linux-shellcoding-1.html):
-```
+```console
 $ objdump -d shellcode|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 
 "\x48\x31\xf6\x56\x48\xbf\x2f\x62\x69\x6e\x2f\x73\x68\x57\x54\x5f\x6a\x3b\x58\x99\x0f\x05"
