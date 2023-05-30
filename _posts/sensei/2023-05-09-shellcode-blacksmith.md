@@ -5,7 +5,7 @@ date: 2023-05-09
 categories: [Sensei, malware]
 tags: [lowlevel, malware]
 permalink: /sensei/shellcode-blacksmith
-image: /assets/img/sensei/shellcode/shellcoding.png
+image: /assets/img/thumbnails/shellcoding.png
 ---
 
 <br>
