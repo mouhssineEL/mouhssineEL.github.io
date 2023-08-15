@@ -13,39 +13,38 @@ baseurl: ""
 lang: en
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Europe/Madrid
+timezone: Europe/France
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Zeropio's Dojo # the main title
+title: Zoldik's blog # the main title
 
-tagline: Cyberninja # it will display as the sub-title
+tagline: zoldik # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Diving into low level.
-
+ A blog to trace my learning and share notes and write-ups and many more...
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://zeropio.ninja/"
+url: "https://mouhssineEL.blog/"
 
 github:
-  username: zeropio # change to your github username
+  username: mouhssineEL # change to your github username
 
 twitter:
-  username: ZeropioWasTaken # change to your twitter username
+  username:  # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: zeropio
-  email: zeropio@pm.me # change to your email address
+  name: zoldik_ME
+  email: mouhssine.el_idrissi@insa-cvl.fr # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/ZeropioWasTaken # change to your twitter homepage
-    - https://github.com/zeropio # change to your github homepage
+    #- https://twitter.com/somenamehere # change to your twitter homepage
+    - https://github.com/mouhssineEL # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/emilio-sánchez-garcía/
+    - https://www.linkedin.com/in/mouhssine el idrissi/
 
 google_site_verification: # fill in to your verification string
 
