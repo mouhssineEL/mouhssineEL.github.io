@@ -25,7 +25,7 @@ tagline: zoldik # it will display as the sub-title
 description: >- # used by seo meta and the atom feed
  A blog to trace my learning and share notes and write-ups and many more...
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://mouhssineEL.github.io/"
+url: "mouhssineEL.github.io"
 
 github:
   username: mouhssineEL # change to your github username
