@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en" data-mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="OSDev Chapter 2 Rust Kernel" /><meta name="author" content="Zeropio" /><meta property="og:locale" content="en" /><meta name="description" content="Introduction" /><meta property="og:description" content="Introduction" /><link rel="canonical" href="mouhssineEL.github.io/lowlevel/osdev/chapter-2" /><meta property="og:url" content="mouhssineEL.github.io/lowlevel/osdev/chapter-2" /><meta property="og:site_name" content="zoldik_ME’s blog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2023-04-17T00:00:00+00:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="OSDev Chapter 2 Rust Kernel" /><meta name="twitter:site" content="@" /><meta name="twitter:creator" content="@ZeropioWasTaken" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Zeropio","url":"https://twitter.com/ZeropioWasTaken"},"dateModified":"2023-05-09T09:14:07+00:00","datePublished":"2023-04-17T00:00:00+00:00","description":"Introduction","headline":"OSDev Chapter 2 Rust Kernel","mainEntityOfPage":{"@type":"WebPage","@id":"mouhssineEL.github.io/lowlevel/osdev/chapter-2"},"url":"mouhssineEL.github.io/lowlevel/osdev/chapter-2"}</script><title>OSDev | Chapter 2 | Rust Kernel | zoldik_ME's blog</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="zoldik_ME's blog"><meta name="application-name" content="zoldik_ME's blog"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script><body data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/icon.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title"> <a href="/">zoldik_ME's blog</a></div><div class="site-subtitle font-italic">zoldik</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/mouhssineEL" aria-label="github" target="_blank" rel="noopener noreferrer"> <i class="fab fa-github"></i> </a> <a href="https://ctftime.org/team/212175" aria-label="ctftime" target="_blank" rel="noopener noreferrer"> <i class="fas fa-flag"></i> </a> <a href="https://app.hackthebox.com/profile/380109" aria-label="hackthebox" target="_blank" rel="noopener noreferrer"> <i class="fas fa-cube"></i> </a> <a href="https://twitter.com/" aria-label="twitter" target="_blank" rel="noopener noreferrer"> <i class="fab fa-twitter"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>OSDev | Chapter 2 | Rust Kernel</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>OSDev | Chapter 2 | Rust Kernel</h1><div class="post-meta text-muted"> <span> Posted <em class="" data-ts="1681689600" data-df="ll" data-toggle="tooltip" data-placement="bottom"> Apr 17, 2023 </em> </span> <span> Updated <em class="" data-ts="1683623647" data-df="ll" data-toggle="tooltip" data-placement="bottom"> May 9, 2023 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://twitter.com/ZeropioWasTaken">Zeropio</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2221 words"> <em>12 min</em> read</span></div></div></div><div class="post-content"><h2 id="introduction"><span class="mr-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Now that we have a freestanding Rust binary, the next step is to create the kernel. We will create a 64-bit kernel for the x86 architecture. As we saw in the first chapter, we will begin by developing a bootable file.</p><p><br /></p><hr /><h2 id="the-boot"><span class="mr-2">The Boot</span><a href="#the-boot" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>As explained in <a href="/lowlevel/buildingos/chapter-0#booting">Chapter 0</a>, almost all modern machines have a BIOS. When a computer is started, the BIOS runs by itself and initializes all the hardware. It then looks for disks and searches for a bootable section. This <em>bootloader</em> must be a 512-byte section. Additionally, we need to switch from 16-bit <em>real mode</em> to 32-bit <em>protected mode</em> (as we did in <a href="/lowlevel/buildingos/chapter-0#protected-mode">Chapter 0</a>) and then to 64-bit <em>long mode</em>.</p><p>Instead of crafting the bootloader in ASM as we did before, we will use the <a href="https://crates.io/crates/bootimage">bootimage</a> crate.</p><p><br /></p><hr /><h2 id="creating-the-architecture"><span class="mr-2">Creating the Architecture</span><a href="#creating-the-architecture" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>As we have seen, by default, Rust compiles to a target OS and architecture. To write a kernel, we must specify that we don’t want to compile to an OS, but rather be the OS itself. During compile time, we can use the <code class="language-plaintext highlighter-rouge">--target</code> flag to select this or we can build our own JSON file:</p><div file="x86_64-zeros.json" class="language-json highlighter-rouge"><div class="code-header"> <span data-label-text="x86_64-zeros.json"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"llvm-target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64-unknown-none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data-layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e-m:e-i64:64-f80:128-n8:16:32:64-S128"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"arch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"target-endian"</span><span class="p">:</span><span class="w"> </span><span class="s2">"little"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"target-pointer-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"target-c-int-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"executables"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linker-flavor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ld.lld"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rust-lld"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"panic-strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abort"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"disable-redzone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-mmx,-sse,+soft-float"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></table></code></div></div><p>We change the <code class="language-plaintext highlighter-rouge">os</code> and <code class="language-plaintext highlighter-rouge">llvm-target</code> to <code class="language-plaintext highlighter-rouge">none</code>. We also change the linker from the default linker (in this case Linux) to the Rust linker. We set the <code class="language-plaintext highlighter-rouge">panic-strategy</code> to <code class="language-plaintext highlighter-rouge">abort</code> to disable <em>stack unwinding</em><sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>. We disable the <em>red zone</em><sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>. Finally, we disable <code class="language-plaintext highlighter-rouge">mmx</code> and <code class="language-plaintext highlighter-rouge">sse</code> (support for <strong>SIMD</strong>, <strong>S</strong>ingle <strong>I</strong>nstruction <strong>M</strong>ultiple <strong>D</strong>ata, which can speed up programs, but create performance problems in OS kernels) and enable <code class="language-plaintext highlighter-rouge">soft-float</code>. Because the <code class="language-plaintext highlighter-rouge">x86_64</code> architecture needs SIMD registers, we need to add <code class="language-plaintext highlighter-rouge">soft-float</code> to emulate all floating-point operations.</p><p><br /></p><hr /><h2 id="compiling-the-kernel"><span class="mr-2">Compiling the Kernel</span><a href="#compiling-the-kernel" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>If we try to compile the kernel, it will crash because it can’t find the <code class="language-plaintext highlighter-rouge">core</code> library. This library is precompiled for each target Rust has, but since we are using our own target, we don’t have it yet.</p><p>To fix this, we need to use <code class="language-plaintext highlighter-rouge">build-std</code> in our <code class="language-plaintext filepath highlighter-rouge">.cargo/config.toml</code> file. Add this line:</p><div file=".cargo/config.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text=".cargo/config.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nn">[unstable]</span>
+<span class="py">build-std</span> <span class="p">=</span> <span class="p">[</span><span class="s">"core"</span><span class="p">,</span> <span class="s">"compiler_builtins"</span><span class="p">]</span>
+</pre></table></code></div></div><p>To make this work, we need to use Rust nightly:</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>rustup override set nightly
+</pre></table></code></div></div><p>Then, we can create a file called <code class="language-plaintext highlighter-rouge">rust-toolchain</code> with the contents <code class="language-plaintext highlighter-rouge">nightly</code>. We should see the version:</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>rustc --version
+    rustc 1.71.0-nightly (d0f204e4d 2023-04-16)
+</pre></table></code></div></div><p>And install:</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>rustup component add rust-src
+</pre></table></code></div></div><h3 id="c-functions"><span class="mr-2">C Functions</span><a href="#c-functions" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>In the future, we will need some C functions such as <code class="language-plaintext highlighter-rouge">memset</code>, <code class="language-plaintext highlighter-rouge">memcmp</code>, etc. Since these are from C and we don’t have them in the system, we can either build our own functions (which could lead to errors) or enable the compilation of the C library to the system. Before the <code class="language-plaintext highlighter-rouge">build-std</code> section in <code class="language-plaintext filepath highlighter-rouge">.cargo/config.toml</code>, add:</p><div file=".cargo/config.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text=".cargo/config.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="py">build-std-features</span> <span class="p">=</span> <span class="p">[</span><span class="s">"compiler-builtins-mem"</span><span class="p">]</span>
+</pre></table></code></div></div><h3 id="default-target"><span class="mr-2">Default Target</span><a href="#default-target" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>To avoid specifying the kernel target each time we compile, we can set the default target in <code class="language-plaintext filepath highlighter-rouge">.cargo/config.toml</code>:</p><div file=".cargo/config.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text=".cargo/config.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nn">[build]</span>
+<span class="py">target</span> <span class="p">=</span> <span class="s">"x86_64-zeros.json"</span>
+</pre></table></code></div></div><p><br /></p><hr /><h2 id="printing-some-string"><span class="mr-2">Printing some String</span><a href="#printing-some-string" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>To output some text in the system, for a health check, we can print a string on the <em>VGA text buffer</em><sup id="fnref:fn-nth-3" role="doc-noteref"><a href="#fn:fn-nth-3" class="footnote" rel="footnote">3</a></sup>. For this, we need to:</p><ul><li>Create a string:<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="k">static</span> <span class="n">HELLO</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">]</span> <span class="o">=</span> <span class="s">b"Hello World"</span><span class="p">;</span>
+</pre></table></code></div></div><li>Then, in our <code class="language-plaintext highlighter-rouge">_start</code> function, convert the integer <code class="language-plaintext highlighter-rouge">0xb8000</code> to a raw pointer:<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="k">let</span> <span class="n">vga_buffer</span> <span class="o">=</span> <span class="mi">0xb8000</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">;</span>
+</pre></table></code></div></div><li>Iterate over the string:<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">)</span> <span class="k">in</span> <span class="n">HELLO</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.enumerate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">unsafe</span> <span class="p">{</span>
+      <span class="o">*</span><span class="n">vga_buffer</span><span class="nf">.offset</span><span class="p">(</span><span class="n">i</span> <span class="k">as</span> <span class="nb">isize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">byte</span><span class="p">;</span>
+      <span class="o">*</span><span class="n">vga_buffer</span><span class="nf">.offset</span><span class="p">(</span><span class="n">i</span> <span class="k">as</span> <span class="nb">isize</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0x4</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></table></code></div></div></ul><p>The <code class="language-plaintext highlighter-rouge">enumerate</code> method gets the running variable <code class="language-plaintext highlighter-rouge">i</code>. The <code class="language-plaintext highlighter-rouge">offset</code> method writes the string byte with the color red (<code class="language-plaintext highlighter-rouge">0x4</code>). The <code class="language-plaintext highlighter-rouge">unsafe</code> usage allows us to interact directly with the OS. In this case, we can call raw pointers without having an error. The final version is:</p><div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="k">static</span> <span class="n">HELLO</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">]</span> <span class="o">=</span> <span class="s">b"Hello World from ZerOS!"</span><span class="p">;</span>
+
+<span class="nd">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="s">"C"</span> <span class="k">fn</span> <span class="nf">_start</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">!</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">vga_buffer</span> <span class="o">=</span> <span class="mi">0xb8000</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="nb">u8</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">)</span> <span class="k">in</span> <span class="n">HELLO</span><span class="nf">.iter</span><span class="p">()</span><span class="nf">.enumerate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">unsafe</span> <span class="p">{</span>
+            <span class="o">*</span><span class="n">vga_buffer</span><span class="nf">.offset</span><span class="p">(</span><span class="n">i</span> <span class="k">as</span> <span class="nb">isize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">byte</span><span class="p">;</span>
+            <span class="o">*</span><span class="n">vga_buffer</span><span class="nf">.offset</span><span class="p">(</span><span class="n">i</span> <span class="k">as</span> <span class="nb">isize</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0x4</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">loop</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><br /></p><hr /><h2 id="running-the-kernel"><span class="mr-2">Running the Kernel</span><a href="#running-the-kernel" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>First, we need to add the <code class="language-plaintext highlighter-rouge">bootimage</code> dependency to <code class="language-plaintext filepath highlighter-rouge">Cargo.toml</code>:</p><div file="Cargo.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text="Cargo.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nn">[dependencies]</span>
+<span class="py">bootloader</span> <span class="p">=</span> <span class="s">"0.9.23"</span>
+</pre></table></code></div></div><blockquote class="prompt-danger"><p>Newer versions may crash!</p></blockquote><p>Install the necessary dependencies:</p><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>cargo <span class="nb">install </span>bootimage
+rustup component add llvm-tools-preview
+</pre></table></code></div></div><p>Now we can compile it with:</p><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>cargo bootimage
+</pre></table></code></div></div><p>We need to use <code class="language-plaintext highlighter-rouge">bootimage</code> because Rust doesn’t directly compile to a <code class="language-plaintext highlighter-rouge">.iso</code> or <code class="language-plaintext highlighter-rouge">.bin</code>, so we cannot boot from it. The <code class="language-plaintext highlighter-rouge">bootimage</code> tool helps us make it a bootable file. We can easily execute it by running:</p><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>qemu-system-x86_64 target/x86_64-zeros/debug/bootimage-zeros.bin
+</pre></table></code></div></div><p>Our kernel is now up and running: <a href="/assets/img/osdev/2023-04-17_16-25.png" class="popup img-link "><img data-src="/assets/img/osdev/2023-04-17_16-25.png" alt="" class="lazyload" data-proofer-ignore></a> <em>Running Kernel</em></p><p>With this, we have achieved the same functionality as in Chapter 0, but using Rust instead of Assembly.</p><p><br /></p><hr /><h2 id="more-text"><span class="mr-2">More Text</span><a href="#more-text" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>We’ll be using Rust’s <a href="https://veykril.github.io/tlborm/">Macros</a> functionality to create a more stable method for printing to VGA. To print to the VGA buffer, we must write to it in a specific format:</p><div class="table-wrapper"><table><thead><tr><th><strong>Bits</strong><th><strong>Value</strong><tbody><tr><td>0 - 7<td>ASCII<tr><td>8 - 11<td>Foreground color<tr><td>12 - 14<td>Background color<tr><td>15<td>Blink</table></div><div class="table-wrapper"><table><thead><tr><th><strong>Value</strong><th><strong>Color</strong><th><strong>Value</strong><th><strong>Color</strong><tbody><tr><td>0x0<td>Black<td>0x8<td>Dark Gray<tr><td>0x1<td>Blue<td>0x9<td>Light Blue<tr><td>0x2<td>Green<td>0xa<td>Light Green<tr><td>0x3<td>Cyan<td>0xb<td>Light Cyan<tr><td>0x4<td>Red<td>0xc<td>Light Red<tr><td>0x5<td>Magenta<td>0xd<td>Pink<tr><td>0x6<td>Brown<td>0xe<td>Yellow<tr><td>0x7<td>Light Gray<td>0xf<td>White</table></div><p>The VGA buffer is a memory-mapped I/O located at address <code class="language-plaintext highlighter-rouge">0xb8000</code>. While the text buffer supports normal reads and writes, some memory-mapped I/O does not support all RAM operations. Therefore, we need to implement a writer that only writes to the buffer. It’s important to note that the compiler doesn’t differentiate between the VGA buffer memory and normal RAM, so it may not recognize the characters we’re attempting to print, resulting in errors.</p><p>To address this issue, we’ll add the macro to <code class="language-plaintext filepath highlighter-rouge">vga_buffer.rs</code>.</p><h3 id="colors"><span class="mr-2">Colors</span><a href="#colors" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>First, we’ll create an enum that includes all the colors. We’ll use a <em>C-like enum</em> to add a <code class="language-plaintext highlighter-rouge">u8</code> value. The <code class="language-plaintext highlighter-rouge">#[allow(dead_code)]</code> attribute disables warnings for unused variants:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="nd">#[allow(dead_code)]</span>
+<span class="nd">#[derive(Debug,</span> <span class="nd">Clone,</span> <span class="nd">Copy,</span> <span class="nd">PartialEq,</span> <span class="nd">Eq)]</span>
+<span class="nd">#[repr(u8)]</span>
+<span class="k">pub</span> <span class="k">enum</span> <span class="n">Color</span> <span class="p">{</span>
+    <span class="n">Black</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">Blue</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">Green</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">Cyan</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">Red</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">Magenta</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">Brown</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">LightGray</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">DarkGray</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">LightBlue</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">LightGreen</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">LightCyan</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">LightRed</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">Pink</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">Yellow</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">White</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>To represent colors, we’ll create a struct that sets both foreground and background colors, and we’ll use the <em>derive</em> macro to include the <code class="language-plaintext highlighter-rouge">Debug</code>, <code class="language-plaintext highlighter-rouge">Clone</code>, <code class="language-plaintext highlighter-rouge">Copy</code>, <code class="language-plaintext highlighter-rouge">PartialEq</code>, and <code class="language-plaintext highlighter-rouge">Eq</code> traits. We’ll also use the <code class="language-plaintext highlighter-rouge">repr(transparent)</code> attribute to ensure the struct has the same data layout as <code class="language-plaintext highlighter-rouge">u8</code>:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="nd">#[derive(Debug,</span> <span class="nd">Clone,</span> <span class="nd">Copy,</span> <span class="nd">PartialEq,</span> <span class="nd">Eq)]</span>
+<span class="nd">#[repr(transparent)]</span>
+<span class="k">struct</span> <span class="nf">ColorCode</span><span class="p">(</span><span class="nb">u8</span><span class="p">);</span>
+
+<span class="k">impl</span> <span class="n">ColorCode</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">foreground</span><span class="p">:</span> <span class="n">Color</span><span class="p">,</span> <span class="n">background</span><span class="p">:</span> <span class="n">Color</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">ColorCode</span> <span class="p">{</span>
+        <span class="nf">ColorCode</span><span class="p">((</span><span class="n">background</span> <span class="k">as</span> <span class="nb">u8</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span> <span class="p">|</span> <span class="p">(</span><span class="n">foreground</span> <span class="k">as</span> <span class="nb">u8</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="text-and-volatile"><span class="mr-2">Text and Volatile</span><a href="#text-and-volatile" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>The issue with the code is that it only writes to <code class="language-plaintext highlighter-rouge">Buffer</code> and never reads from it again. Since the compiler doesn’t know which characters are being printed, some may be omitted. To prevent these errors, we’ll use the <a href="https://docs.rs/volatile/latest/volatile/">volatile</a> crate. This creates a <code class="language-plaintext highlighter-rouge">Volatile</code> wrapper with <code class="language-plaintext highlighter-rouge">read</code> and <code class="language-plaintext highlighter-rouge">write</code> methods. First, we’ll need to add the dependency:</p><div file="Cargo.toml" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Cargo.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">volatile</span> <span class="o">=</span> <span class="s">"0.2.6"</span>
+</pre></table></code></div></div><p>To represent a character on the screen, we need to use <code class="language-plaintext highlighter-rouge">repr(C)</code> to implement a C struct and guarantee the field ordering. For the <code class="language-plaintext highlighter-rouge">Buffer</code>, we’ll use <code class="language-plaintext highlighter-rouge">repr(transparent)</code> again:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="nd">#[derive(Debug,</span> <span class="nd">Clone,</span> <span class="nd">Copy,</span> <span class="nd">PartialEq,</span> <span class="nd">Eq)]</span>
+<span class="nd">#[repr(C)]</span>
+<span class="k">struct</span> <span class="n">ScreenChar</span> <span class="p">{</span>
+    <span class="n">ascii_character</span><span class="p">:</span> <span class="nb">u8</span><span class="p">,</span>
+    <span class="n">color_code</span><span class="p">:</span> <span class="n">ColorCode</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">const</span> <span class="n">BUFFER_HEIGHT</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">BUFFER_WIDTH</span><span class="p">:</span> <span class="nb">usize</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+
+<span class="nd">#[repr(transparent)]</span>
+<span class="k">struct</span> <span class="n">Buffer</span> <span class="p">{</span>
+    <span class="n">chars</span><span class="p">:</span> <span class="p">[[</span><span class="n">Volatile</span><span class="o">&lt;</span><span class="n">ScreenChar</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">BUFFER_WIDTH</span><span class="p">];</span> <span class="n">BUFFER_HEIGHT</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>To write on the screen, we’ll create a type. We’ll need to use a <em>lifetime</em> to indicate to the compiler how long the reference is valid. In this case, <code class="language-plaintext highlighter-rouge">'static</code> specifies that the reference is valid for the entire runtime:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">pub</span> <span class="k">struct</span> <span class="n">Writer</span> <span class="p">{</span>
+    <span class="n">column_position</span><span class="p">:</span> <span class="nb">usize</span><span class="p">,</span>
+    <span class="n">color_code</span><span class="p">:</span> <span class="n">ColorCode</span><span class="p">,</span>
+    <span class="n">buffer</span><span class="p">:</span> <span class="o">&amp;</span><span class="k">'static</span> <span class="k">mut</span> <span class="n">Buffer</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="printing"><span class="mr-2">Printing</span><a href="#printing" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>We’ll implement some functions to <code class="language-plaintext highlighter-rouge">Writer</code> to enable writing:</p><ul><li><code class="language-plaintext highlighter-rouge">write_byte</code>: This writes a single ASCII byte. If the byte is <code class="language-plaintext highlighter-rouge">\n</code>, it calls the <code class="language-plaintext highlighter-rouge">new_line</code> method. Since we’re using the <code class="language-plaintext highlighter-rouge">Volatile</code> wrapper, we need to use the <code class="language-plaintext highlighter-rouge">write</code> method.<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="k">pub</span> <span class="k">fn</span> <span class="nf">write_byte</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">byte</span><span class="p">:</span> <span class="nb">u8</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">match</span> <span class="n">byte</span> <span class="p">{</span>
+      <span class="sc">b'\n'</span> <span class="k">=&gt;</span> <span class="k">self</span><span class="nf">.new_line</span><span class="p">(),</span>
+      <span class="n">byte</span> <span class="k">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="k">self</span><span class="py">.column_position</span> <span class="o">&gt;=</span> <span class="n">BUFFER_WIDTH</span> <span class="p">{</span>
+              <span class="k">self</span><span class="nf">.new_line</span><span class="p">();</span>
+          <span class="p">}</span>
+
+          <span class="k">let</span> <span class="n">row</span> <span class="o">=</span> <span class="n">BUFFER_HEIGHT</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="k">let</span> <span class="n">col</span> <span class="o">=</span> <span class="k">self</span><span class="py">.column_position</span><span class="p">;</span>
+
+          <span class="k">let</span> <span class="n">color_code</span> <span class="o">=</span> <span class="k">self</span><span class="py">.color_code</span><span class="p">;</span>
+          <span class="k">self</span><span class="py">.buffer.chars</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="nf">.write</span><span class="p">(</span><span class="n">ScreenChar</span> <span class="p">{</span>
+              <span class="n">ascii_character</span><span class="p">:</span> <span class="n">byte</span><span class="p">,</span>
+              <span class="n">color_code</span><span class="p">,</span>
+          <span class="p">});</span>
+          <span class="k">self</span><span class="py">.column_position</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><li><code class="language-plaintext highlighter-rouge">write_string</code>: To print a whole string, we convert it to bytes and print them one-by-one. For unprintable bytes, we print the <code class="language-plaintext highlighter-rouge">0xfe</code> character.<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="k">fn</span> <span class="nf">write_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="n">byte</span> <span class="k">in</span> <span class="n">s</span><span class="nf">.bytes</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">match</span> <span class="n">byte</span> <span class="p">{</span>
+          <span class="mi">0x20</span><span class="o">..=</span><span class="mi">0x7e</span> <span class="p">|</span> <span class="sc">b'\n'</span> <span class="k">=&gt;</span> <span class="k">self</span><span class="nf">.write_byte</span><span class="p">(</span><span class="n">byte</span><span class="p">),</span>
+          <span class="n">_</span> <span class="k">=&gt;</span> <span class="k">self</span><span class="nf">.write_byte</span><span class="p">(</span><span class="mi">0xfe</span><span class="p">),</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><li><code class="language-plaintext highlighter-rouge">new_line</code>: This moves all the characters one row up.<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">fn</span> <span class="nf">new_line</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="n">row</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="n">BUFFER_HEIGHT</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="n">col</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="n">BUFFER_WIDTH</span> <span class="p">{</span>
+          <span class="k">let</span> <span class="n">character</span> <span class="o">=</span> <span class="k">self</span><span class="py">.buffer.chars</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="nf">.read</span><span class="p">();</span>
+          <span class="k">self</span><span class="py">.buffer.chars</span><span class="p">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="nf">.write</span><span class="p">(</span><span class="n">character</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">self</span><span class="nf">.clear_row</span><span class="p">(</span><span class="n">BUFFER_HEIGHT</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">self</span><span class="py">.column_position</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><li><code class="language-plaintext highlighter-rouge">clear_row</code>: This clears a row by overwriting all of its characters with a space character.<div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="k">fn</span> <span class="nf">clear_row</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">usize</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="n">blank</span> <span class="o">=</span> <span class="n">ScreenChar</span> <span class="p">{</span>
+      <span class="n">ascii_character</span><span class="p">:</span> <span class="sc">b' '</span><span class="p">,</span>
+      <span class="n">color_code</span><span class="p">:</span> <span class="k">self</span><span class="py">.color_code</span><span class="p">,</span>
+  <span class="p">};</span>
+  <span class="k">for</span> <span class="n">col</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="n">BUFFER_WIDTH</span> <span class="p">{</span>
+      <span class="k">self</span><span class="py">.buffer.chars</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="nf">.write</span><span class="p">(</span><span class="n">blank</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div></ul><h3 id="macros"><span class="mr-2">Macros</span><a href="#macros" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>We can implement the <code class="language-plaintext highlighter-rouge">Write</code> method from <code class="language-plaintext highlighter-rouge">fmt</code>:</p><div class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="Rust"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="k">use</span> <span class="nn">core</span><span class="p">::</span><span class="n">fmt</span><span class="p">;</span>
+
+<span class="k">impl</span> <span class="nn">fmt</span><span class="p">::</span><span class="n">Write</span> <span class="k">for</span> <span class="n">Writer</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">write_str</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nn">fmt</span><span class="p">::</span><span class="nb">Result</span> <span class="p">{</span>
+        <span class="k">self</span><span class="nf">.write_string</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="nf">Ok</span><span class="p">(())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="println-macro"><span class="mr-2">println Macro</span><a href="#println-macro" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Statics are initialized at compile time, unlike other variables. To initialize statics at runtime, we need to use the <a href="https://crates.io/crates/lazy_static">lazy_statics</a> crate. First, add it. The <code class="language-plaintext highlighter-rouge">spin_no_std</code> crate allows us not to link to <code class="language-plaintext highlighter-rouge">std</code>:</p><div file="Cargo.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text="Cargo.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nn">[dependencies.lazy_static]</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"1.0"</span>
+<span class="py">features</span> <span class="p">=</span> <span class="p">[</span><span class="s">"spin_no_std"</span><span class="p">]</span>
+</pre></table></code></div></div><p>Now we can use <code class="language-plaintext highlighter-rouge">lazy_static!</code> to define the static <code class="language-plaintext highlighter-rouge">WRITER</code>. Since all the write methods take <code class="language-plaintext highlighter-rouge">&amp;mut self</code>, we can’t write anything to it. If we use a mutable static, it will be unsafe code because it could easily introduce data races. To get a <em>synchronized</em> interior mutability, we can use the <a href="https://doc.rust-lang.org/nightly/std/sync/struct.Mutex.html">Mutex</a> struct.</p><p>We can use a <em>spinlock</em><sup id="fnref:fn-nth-4" role="doc-noteref"><a href="#fn:fn-nth-4" class="footnote" rel="footnote">4</a></sup> to create a loop instead of blocking the threads. First, add the dependency:</p><div file="Cargo.toml" class="language-toml highlighter-rouge"><div class="code-header"> <span data-label-text="Cargo.toml"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nn">[dependencies]</span>
+<span class="py">spin</span> <span class="p">=</span> <span class="s">"0.5.2"</span>
+</pre></table></code></div></div><p>Now we can create the <em>unsafe</em> function to print with interior mutability:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="k">use</span> <span class="nn">spin</span><span class="p">::</span><span class="n">Mutex</span><span class="p">;</span>
+
+<span class="nd">lazy_static!</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">static</span> <span class="k">ref</span> <span class="n">WRITER</span><span class="p">:</span> <span class="n">Mutex</span><span class="o">&lt;</span><span class="n">Writer</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">Mutex</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">Writer</span> <span class="p">{</span>
+        <span class="n">column_position</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">color_code</span><span class="p">:</span> <span class="nn">ColorCode</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="nn">Color</span><span class="p">::</span><span class="n">Yellow</span><span class="p">,</span> <span class="nn">Color</span><span class="p">::</span><span class="n">Black</span><span class="p">),</span>
+        <span class="n">buffer</span><span class="p">:</span> <span class="k">unsafe</span> <span class="p">{</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="o">*</span><span class="p">(</span><span class="mi">0xb8000</span> <span class="k">as</span> <span class="o">*</span><span class="k">mut</span> <span class="n">Buffer</span><span class="p">)</span> <span class="p">},</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>For easier access, we can create the <code class="language-plaintext highlighter-rouge">println</code> macro. This function has two rules: printing without parameters (simple <code class="language-plaintext highlighter-rouge">println()</code>) and printing with parameters (<code class="language-plaintext highlighter-rouge">println("Hi")</code> or <code class="language-plaintext highlighter-rouge">println("{}", 4)</code>). For this, we can copy the <code class="language-plaintext highlighter-rouge">println!</code> function from Rust:</p><div file="src/vga_buffer.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/vga_buffer.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nd">#[macro_export]</span>
+<span class="nd">macro_rules!</span> <span class="n">println</span> <span class="p">{</span>
+    <span class="p">()</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="nv">$crate</span><span class="p">::</span><span class="nd">print!</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">));</span>
+    <span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$arg:tt</span><span class="p">)</span><span class="o">*</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="nv">$crate</span><span class="p">::</span><span class="nd">print!</span><span class="p">(</span><span class="s">"{}</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="nd">format_args!</span><span class="p">(</span><span class="nv">$</span><span class="p">(</span><span class="nv">$arg</span><span class="p">)</span><span class="o">*</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>We are now able to use the <code class="language-plaintext highlighter-rouge">println</code> macro to print messages to the screen.</p><div file="src/main.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/main.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="nd">#[no_mangle]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="s">"C"</span> <span class="k">fn</span> <span class="nf">_start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Hello World{}"</span><span class="p">,</span> <span class="s">"!"</span><span class="p">);</span>
+
+    <span class="k">loop</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>To allow the usage on any file in the project we need to create a <code class="language-plaintext filepath highlighter-rouge">src/lib.rs</code> with the following contents:</p><div file="src/lib.rs" class="language-rust highlighter-rouge"><div class="code-header"> <span data-label-text="src/lib.rs"><i class="far fa-file-code"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nd">#![no_std]</span>
+
+<span class="k">pub</span> <span class="k">mod</span> <span class="n">vga_buffer</span><span class="p">;</span>
+</pre></table></code></div></div><p><br /></p><hr /><h2 id="final-result"><span class="mr-2">Final Result</span><a href="#final-result" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Our Kernel is now operational and printing output to the screen:</p><p><a href="/assets/img/osdev/2023-04-20_12-50.png" class="popup img-link "><img data-src="/assets/img/osdev/2023-04-20_12-50.png" alt="" class="lazyload" data-proofer-ignore></a> <em>Running Kernel</em></p><p><br /></p><hr /><h2 id="references"><span class="mr-2">References</span><a href="#references" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li><a href="https://os.phil-opp.com/minimal-rust-kernel/">A Minimal Rust Kernel</a><li><a href="https://doc.rust-lang.org/stable/book/ch19-01-unsafe-rust.html">Unsafe Rust</a><li><a href="https://os.phil-opp.com/vga-text-mode/">VGA Text Mode</a><li><a href="https://www.bogotobogo.com/cplusplus/stackunwinding.php">Stack Unwinding</a><li><a href="https://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64#the-red-zone">Red Zone</a></ul><p><br /></p><hr /><h2 id="footnotes"><span class="mr-2">Footnotes</span><a href="#footnotes" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><div class="footnotes" role="doc-endnotes"><ol><li id="fn:footnote" role="doc-endnote"><p><strong>Stack unwinding</strong> is the process of <em>unrolling</em> the call stack in a computer program when an exception or error occurs. This involves reversing the sequence of function calls that led to the error, deallocating resources that were allocated during those calls, and returning control to the point where the error occurred. The purpose of stack unwinding is to ensure that the program exits gracefully and that all resources are properly cleaned up, even in the event of an unexpected error. <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p><li id="fn:fn-nth-2" role="doc-endnote"><p>The <strong>Red Zone</strong> is an optimization that allow functions the use of the 128 bytes below their stack frame. This optimization leads to problems with exceptions and hardware interrupts. If a function is stopped while using the red zone, and the CPU overwrite it, the function still need the previous values from it. This leads to strange and hard-to-find bugs. <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p><li id="fn:fn-nth-3" role="doc-endnote"><p>It is a special memory area mapped to the VGA hardware, that display the contents on screen. Normally, consist of 25 lines with 80 characters each. <a href="#fnref:fn-nth-3" class="reversefootnote" role="doc-backlink">&#8617;</a></p><li id="fn:fn-nth-4" role="doc-endnote"><p>is a lock that causes a thread trying to acquire it to simply wait in a loop while repeatedly checking whether the lock is available. <a href="#fnref:fn-nth-4" class="reversefootnote" role="doc-backlink">&#8617;</a></p></ol></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/lowlevel/'>LowLevel</a>, <a href='/categories/osdev/'>OSDev</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/lowlevel/" class="post-tag no-text-decoration" >lowlevel</a> <a href="/tags/osdev/" class="post-tag no-text-decoration" >osdev</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=OSDev%20%7C%20Chapter%202%20%7C%20Rust%20Kernel%20-%20zoldik_ME's%20blog&url=mouhssineEL.github.io%2Flowlevel%2Fosdev%2Fchapter-2" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=OSDev%20%7C%20Chapter%202%20%7C%20Rust%20Kernel%20-%20zoldik_ME's%20blog&u=mouhssineEL.github.io%2Flowlevel%2Fosdev%2Fchapter-2" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=mouhssineEL.github.io%2Flowlevel%2Fosdev%2Fchapter-2&text=OSDev%20%7C%20Chapter%202%20%7C%20Rust%20Kernel%20-%20zoldik_ME's%20blog" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" data-title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recently Updated</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/index">Index</a><li><a href="/sensei/shellcode-blacksmith">The Shellcode Blacksmith | Sensei</a><li><a href="/lowlevel/osdev/chapter-0">OSDev | Chapter 0 | Basic Kernel</a><li><a href="/malware/development/putty-1">MalDev | Putty</a><li><a href="/malware/development/dropper-explorer-1">MalDev | Dropper Explorer.exe</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/lowlevel/">lowlevel</a> <a class="post-tag" href="/tags/malware/">malware</a> <a class="post-tag" href="/tags/osdev/">osdev</a> <a class="post-tag" href="/tags/windows/">windows</a> <a class="post-tag" href="/tags/research/">research</a> <a class="post-tag" href="/tags/reversing/">reversing</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc"></nav></div><script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5"><div id="related-posts" class="mb-2 mb-sm-4"><h3 class="pt-2 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/lowlevel/osdev/chapter-0"><div class="card-body"> <em class="small" data-ts="1681344000" data-df="ll" > Apr 13, 2023 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>OSDev | Chapter 0 | Basic Kernel</h3><div class="text-muted small"><p> Introduction This series, is a personal project focused on learning more about ASM, kernel development, computer basics, and Rust. This is not a professional blog, and I will be using resources fr...</p></div></div></a></div><div class="card"> <a href="/lowlevel/osdev/chapter-1"><div class="card-body"> <em class="small" data-ts="1681603200" data-df="ll" > Apr 16, 2023 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>OSDev | Chapter 1 | Freestanding Rust</h3><div class="text-muted small"><p> Introduction The kernel will be written in Rust, which is why we need to do some preparations before starting to code. This will not be the beginning of development, but rather the setup phase. Th...</p></div></div></a></div><div class="card"> <a href="/lowlevel/osdev/chapter-3"><div class="card-body"> <em class="small" data-ts="1682467200" data-df="ll" > Apr 26, 2023 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>OSDev | Chapter 3 | Interrupts</h3><div class="text-muted small"><p> Introduction To create a functional OS, it is essential to handle errors such as division by zero, attempts to access non-existent memory addresses, and other potential issues. One approach to han...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/lowlevel/osdev/chapter-1" class="btn btn-outline-primary" prompt="Older"><p>OSDev | Chapter 1 | Freestanding Rust</p></a> <a href="/lowlevel/osdev/chapter-3" class="btn btn-outline-primary" prompt="Newer"><p>OSDev | Chapter 3 | Interrupts</p></a></div></div></div></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/lowlevel/">lowlevel</a> <a class="post-tag" href="/tags/malware/">malware</a> <a class="post-tag" href="/tags/osdev/">osdev</a> <a class="post-tag" href="/tags/windows/">windows</a> <a class="post-tag" href="/tags/research/">research</a> <a class="post-tag" href="/tags/reversing/">reversing</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><footer><div class="container pl-lg-4 pr-lg-4"><div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://github.com/mouhssineEL">zoldik_ME</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0">Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.</p></div></div></div></footer><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No results found.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/en.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>
